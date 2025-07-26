@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure | Idoko Ernest Chukwudi | Portfolio</title>
+    <link>http://localhost:1313/tags/azure/</link>
+      <atom:link href="http://localhost:1313/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+    <description>Azure</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 15 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
+      <title>Azure</title>
+      <link>http://localhost:1313/tags/azure/</link>
+    </image>
+    
+    <item>
+      <title>Azure WAN &#43; VNets with Terraform</title>
+      <link>http://localhost:1313/project/scikit/</link>
+      <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/scikit/</guid>
+      <description>&lt;p&gt;scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

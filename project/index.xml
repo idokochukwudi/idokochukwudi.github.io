@@ -5,7 +5,7 @@
     <link>http://localhost:1313/project/</link>
       <atom:link href="http://localhost:1313/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:1313/media/icon_hu_645fa481986063ef.png</url>
       <title>Projects</title>
@@ -13,27 +13,35 @@
     </image>
     
     <item>
-      <title>Pandas</title>
+      <title>CI/CD Pipeline Project</title>
       <link>http://localhost:1313/project/pandas/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/project/pandas/</guid>
-      <description>&lt;p&gt;Flexible and powerful data analysis / manipulation library for Python, providing labeled data structures.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Dockerized Attendance App with Jenkins, Prometheus &amp;amp; Grafana&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>PyTorch</title>
+      <title>Moodle CBT Deployment with Docker &amp; Bash</title>
       <link>http://localhost:1313/project/pytorch/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 20 Apr 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/project/pytorch/</guid>
-      <description>&lt;p&gt;PyTorch is a Python package that provides tensor computation (like NumPy) with strong GPU acceleration.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Automated On-Premise Moodle CBT Deployment with Docker.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>scikit-learn</title>
+      <title>Azure WAN &#43; VNets with Terraform</title>
       <link>http://localhost:1313/project/scikit/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/project/scikit/</guid>
-      <description>&lt;p&gt;scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Automated Azure Virtual WAN and VNet provisioning with Terraform.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Secure AMI Automation</title>
+      <link>http://localhost:1313/project/scikitxtra1/</link>
+      <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/scikitxtra1/</guid>
+      <description>&lt;p&gt;Automated secure AMI creation using Packer and GitHub Actions.&lt;/p&gt;</description>
     </item>
     
   </channel>
