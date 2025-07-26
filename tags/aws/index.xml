@@ -17,7 +17,7 @@
       <link>http://localhost:1313/project/scikitxtra1/</link>
       <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/project/scikitxtra1/</guid>
-      <description>&lt;p&gt;Automated Azure Virtual WAN and VNet provisioning with Terraform.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Automated secure AMI creation using Packer and GitHub Actions.&lt;/p&gt;</description>
     </item>
     
   </channel>
