@@ -15,7 +15,7 @@
     <meta name="author" content="Idoko Ernest Chukwudi" />
     <meta
       name="description"
-      content="DevOps Engineer and Program Analyst with expertise in cloud infrastructure, automation, and CI/CD pipelines."
+      content="Senior DevOps Engineer & Program Analyst with 7+ years expertise in cloud infrastructure, automation, and CI/CD pipelines at Federal Capital Territory Administration."
     />
     <link rel="alternate" hreflang="en-us" href="http://localhost:1313/" />
     <link rel="stylesheet" href="/css/themes/emerald.min.css" />
@@ -31,44 +31,52 @@
       }
 
       :root {
-        /* Primary Colors */
-        --primary-color: #2563eb;
-        --primary-dark: #1d4ed8;
-        --primary-light: #3b82f6;
+        /* Professional Color Palette */
+        --primary-blue: #1a365d;
+        --primary-navy: #0f172a;
+        --primary-dark: #2d3748;
+        --primary-light: #4a5568;
+        --accent-gold: #d4af37;
+        --accent-teal: #319795;
+        --accent-gray: #718096;
 
-        /* Neutral Colors - Professional palette */
-        --bg-light: #ffffff;
+        /* Neutral Colors */
+        --bg-light: #f8fafc;
         --bg-dark: #0f172a;
-        --text-light: #1e293b;
-        --text-dark: #f1f5f9;
-        --text-muted: #64748b;
-        --text-muted-dark: #94a3b8;
+        --text-light: #1a202c;
+        --text-dark: #f7fafc;
+        --text-muted: #4a5568;
+        --text-muted-dark: #a0aec0;
+
+        /* Status Colors */
+        --success: #38a169;
+        --warning: #d69e2e;
+        --error: #e53e3e;
+        --info: #3182ce;
 
         /* Card and Surface Colors */
         --card-light: #ffffff;
         --card-dark: #1e293b;
-        --card-shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08);
-        --card-shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.3);
+        --card-shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --card-shadow-dark: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+          0 2px 4px -1px rgba(0, 0, 0, 0.2);
 
         /* Border Colors */
         --border-light: #e2e8f0;
-        --border-dark: #334155;
+        --border-dark: #2d3748;
 
-        /* Accent Colors */
-        --accent-light: #eff6ff;
-        --accent-dark: #1e3a8a;
-
-        /* Social Media Brand Colors */
-        --email-color: #ea4335;
-        --x-color: #000000;
-        --instagram-color: #e4405f;
-        --github-color: #333333;
-        --linkedin-color: #0a66c2;
-        --email-color-dark: #f87171;
-        --x-color-dark: #ffffff;
-        --instagram-color-dark: #f472b6;
-        --github-color-dark: #d1d5db;
-        --linkedin-color-dark: #60a5fa;
+        /* Gradient Colors */
+        --gradient-subtle: linear-gradient(
+          135deg,
+          var(--primary-navy) 0%,
+          var(--primary-blue) 100%
+        );
+        --gradient-accent: linear-gradient(
+          135deg,
+          var(--accent-teal) 0%,
+          var(--accent-gold) 100%
+        );
 
         /* Typography Scale */
         --font-size-xs: 0.75rem;
@@ -89,8 +97,8 @@
         --line-height-loose: 1.75;
 
         /* Spacing Scale */
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 0.75rem;
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
         --spacing-md: 1rem;
         --spacing-lg: 1.5rem;
         --spacing-xl: 2rem;
@@ -104,11 +112,17 @@
         --section-max-width: 900px;
 
         /* Border Radius */
-        --radius-sm: 0.375rem;
-        --radius-md: 0.5rem;
-        --radius-lg: 0.75rem;
-        --radius-xl: 1rem;
+        --radius-sm: 0.25rem;
+        --radius-md: 0.375rem;
+        --radius-lg: 0.5rem;
+        --radius-xl: 0.75rem;
+        --radius-2xl: 1rem;
         --radius-full: 9999px;
+
+        /* Transitions */
+        --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       /* Base Styles */
@@ -118,13 +132,16 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter",
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         line-height: var(--line-height-relaxed);
         font-size: var(--font-size-base);
         color: var(--text-light);
         background-color: var(--bg-light);
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color var(--transition-normal),
+          color var(--transition-normal);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       .dark body {
@@ -167,17 +184,17 @@
       }
 
       a {
-        color: var(--primary-color);
+        color: var(--accent-teal);
         text-decoration: none;
-        transition: color 0.2s ease;
+        transition: color var(--transition-fast);
       }
 
       .dark a {
-        color: var(--primary-light);
+        color: var(--accent-teal);
       }
 
       a:hover {
-        color: var(--primary-dark);
+        color: var(--accent-gold);
       }
 
       /* Header & Navigation */
@@ -185,22 +202,23 @@
         position: sticky;
         top: 0;
         z-index: 1000;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border-light);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: all var(--transition-normal);
       }
 
       .dark .page-header {
-        background: rgba(15, 23, 42, 0.95);
+        background: rgba(15, 23, 42, 0.98);
         border-bottom-color: var(--border-dark);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
       }
 
       .navbar {
         max-width: var(--content-width);
         margin: 0 auto;
-        padding: var(--spacing-md) var(--spacing-xl);
+        padding: var(--spacing-lg) var(--spacing-xl);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -209,19 +227,19 @@
       .navbar-brand {
         font-size: var(--font-size-xl);
         font-weight: 700;
-        color: var(--primary-color);
+        color: var(--primary-navy);
         text-decoration: none;
         display: flex;
         align-items: center;
-        gap: var(--spacing-xs);
+        gap: var(--spacing-sm);
+      }
+
+      .dark .navbar-brand {
+        color: var(--text-dark);
       }
 
       .navbar-brand:hover {
-        color: var(--primary-dark);
-      }
-
-      .dark .navbar-brand:hover {
-        color: var(--primary-light);
+        color: var(--accent-teal);
       }
 
       .nav-menu {
@@ -236,7 +254,7 @@
         font-weight: 500;
         padding: var(--spacing-xs) var(--spacing-sm);
         border-radius: var(--radius-md);
-        transition: all 0.2s ease;
+        transition: all var(--transition-fast);
         position: relative;
       }
 
@@ -245,11 +263,11 @@
       }
 
       .nav-link:hover {
-        color: var(--primary-color);
+        color: var(--accent-teal);
       }
 
       .nav-link.active {
-        color: var(--primary-color);
+        color: var(--accent-teal);
         font-weight: 600;
       }
 
@@ -260,8 +278,8 @@
         left: 50%;
         transform: translateX(-50%);
         width: 20px;
-        height: 3px;
-        background: var(--primary-color);
+        height: 2px;
+        background: var(--accent-gold);
         border-radius: var(--radius-full);
       }
 
@@ -273,6 +291,7 @@
         cursor: pointer;
         padding: var(--spacing-sm);
         color: var(--text-light);
+        transition: transform var(--transition-fast);
       }
 
       .dark .mobile-menu-toggle {
@@ -284,24 +303,21 @@
         height: 1.5rem;
       }
 
-      /* Hero Section */
+      .mobile-menu-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      /* Hero Section - Professional Design */
       .hero-section {
         padding: var(--spacing-4xl) 0;
         background: linear-gradient(
-          135deg,
-          var(--accent-light) 0%,
-          rgba(235, 248, 255, 0.5) 100%
-        );
+            rgba(15, 23, 42, 0.95),
+            rgba(15, 23, 42, 0.98)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="rgb(15,23,42)"/><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        color: white;
         position: relative;
         overflow: hidden;
-      }
-
-      .dark .hero-section {
-        background: linear-gradient(
-          135deg,
-          var(--accent-dark) 0%,
-          rgba(30, 58, 138, 0.3) 100%
-        );
       }
 
       .hero-section::before {
@@ -311,11 +327,17 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      }
-
-      .dark .hero-section::before {
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(212, 175, 55, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(49, 151, 149, 0.1) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
       }
 
       .hero-content {
@@ -348,33 +370,64 @@
       }
 
       .profile-avatar {
-        width: 200px;
-        height: 200px;
-        border-radius: var(--radius-full);
+        width: 240px;
+        height: 240px;
+        border-radius: var(--radius-2xl);
         object-fit: cover;
-        border: 4px solid var(--card-light);
-        box-shadow: var(--card-shadow-light);
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+          0 40px 80px rgba(0, 0, 0, 0.2);
+        transition: all var(--transition-normal);
       }
 
-      .dark .profile-avatar {
-        border-color: var(--card-dark);
-        box-shadow: var(--card-shadow-dark);
+      .profile-avatar:hover {
+        transform: translateY(-5px);
+        border-color: rgba(212, 175, 55, 0.3);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4),
+          0 50px 100px rgba(0, 0, 0, 0.3);
       }
 
+      /* Professional Profile Badge */
       .profile-badge {
         position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background: var(--primary-color);
-        color: white;
-        width: 40px;
-        height: 40px;
+        bottom: 15px;
+        right: 15px;
+        background: linear-gradient(135deg, var(--accent-gold), #b8860b);
+        color: var(--primary-navy);
+        width: 60px;
+        height: 60px;
         border-radius: var(--radius-full);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: var(--font-size-lg);
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        border: 3px solid white;
+        animation: subtleFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes subtleFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-5px) rotate(5deg);
+        }
+      }
+
+      .profile-badge::after {
+        content: "7+";
+        position: absolute;
+        font-size: var(--font-size-sm);
+        background: var(--primary-navy);
+        color: white;
+        padding: 2px 6px;
+        border-radius: var(--radius-full);
+        bottom: -5px;
+        right: -5px;
+        border: 2px solid var(--accent-gold);
       }
 
       .profile-info {
@@ -382,45 +435,63 @@
       }
 
       .profile-title {
-        font-size: var(--font-size-3xl);
+        font-size: var(--font-size-4xl);
         font-weight: 800;
         margin-bottom: var(--spacing-sm);
-        background: linear-gradient(
-          135deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       }
 
       .profile-subtitle {
         font-size: var(--font-size-xl);
-        color: var(--text-muted);
+        color: rgba(255, 255, 255, 0.9);
         margin-bottom: var(--spacing-md);
         font-weight: 600;
-      }
-
-      .dark .profile-subtitle {
-        color: var(--text-muted-dark);
       }
 
       .profile-organization {
         display: inline-flex;
         align-items: center;
-        gap: var(--spacing-xs);
-        color: var(--text-muted);
+        gap: var(--spacing-sm);
+        color: rgba(255, 255, 255, 0.8);
         font-size: var(--font-size-lg);
         margin-bottom: var(--spacing-xl);
         padding: var(--spacing-sm) var(--spacing-md);
-        background: var(--accent-light);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
         border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: fit-content;
       }
 
-      .dark .profile-organization {
-        color: var(--text-muted-dark);
-        background: var(--accent-dark);
+      .experience-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--accent-gold), #b8860b);
+        color: var(--primary-navy);
+        font-weight: 700;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: var(--radius-full);
+        font-size: var(--font-size-sm);
+        margin-left: var(--spacing-sm);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
+      .profile-description {
+        font-size: var(--font-size-lg);
+        line-height: var(--line-height-relaxed);
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: var(--spacing-xl);
+        max-width: 600px;
       }
 
       /* Social Links */
@@ -434,144 +505,97 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
         border-radius: var(--radius-full);
-        background: var(--accent-light);
-        color: var(--text-muted);
-        transition: all 0.3s ease;
-      }
-
-      .dark .social-link {
-        background: var(--accent-dark);
-        color: var(--text-muted-dark);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        color: white;
+        transition: all var(--transition-normal);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .social-link:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px) scale(1.1);
+        background: rgba(212, 175, 55, 0.2);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
       }
 
-      /* Social media specific colors */
-      .social-link.email {
-        color: var(--email-color);
-      }
-      .social-link.email:hover {
-        background: var(--email-color);
-        color: white;
-      }
-
-      .social-link.x {
-        color: var(--x-color);
-      }
-      .social-link.x:hover {
-        background: var(--x-color);
-        color: white;
+      /* Main Content Grid */
+      .main-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-3xl);
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: var(--spacing-3xl) var(--spacing-xl);
       }
 
-      .social-link.instagram {
-        color: var(--instagram-color);
-      }
-      .social-link.instagram:hover {
-        background: var(--instagram-color);
-        color: white;
-      }
-
-      .social-link.github {
-        color: var(--github-color);
-      }
-      .social-link.github:hover {
-        background: var(--github-color);
-        color: white;
-      }
-
-      .social-link.linkedin {
-        color: var(--linkedin-color);
-      }
-      .social-link.linkedin:hover {
-        background: var(--linkedin-color);
-        color: white;
-      }
-
-      /* Dark mode social media colors */
-      .dark .social-link.email {
-        color: var(--email-color-dark);
-      }
-      .dark .social-link.email:hover {
-        background: var(--email-color-dark);
-        color: var(--bg-dark);
-      }
-
-      .dark .social-link.x {
-        color: var(--x-color-dark);
-      }
-      .dark .social-link.x:hover {
-        background: var(--x-color-dark);
-        color: var(--bg-dark);
-      }
-
-      .dark .social-link.instagram {
-        color: var(--instagram-color-dark);
-      }
-      .dark .social-link.instagram:hover {
-        background: var(--instagram-color-dark);
-        color: var(--bg-dark);
-      }
-
-      .dark .social-link.github {
-        color: var(--github-color-dark);
-      }
-      .dark .social-link.github:hover {
-        background: var(--github-color-dark);
-        color: var(--bg-dark);
-      }
-
-      .dark .social-link.linkedin {
-        color: var(--linkedin-color-dark);
-      }
-      .dark .social-link.linkedin:hover {
-        background: var(--linkedin-color-dark);
-        color: var(--bg-dark);
+      @media (min-width: 1024px) {
+        .main-content {
+          grid-template-columns: 1fr 1fr;
+          gap: var(--spacing-4xl);
+          padding: var(--spacing-4xl) var(--spacing-xl);
+        }
       }
 
       /* About Section */
       .about-section {
-        padding: var(--spacing-3xl) 0;
-        background: var(--bg-light);
+        background: var(--card-light);
+        border-radius: var(--radius-2xl);
+        padding: var(--spacing-2xl);
+        box-shadow: var(--card-shadow-light);
+        border: 1px solid var(--border-light);
+        position: relative;
+        overflow: hidden;
+        transition: transform var(--transition-normal),
+          box-shadow var(--transition-normal);
+      }
+
+      .about-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       }
 
       .dark .about-section {
-        background: var(--bg-dark);
+        background: var(--card-dark);
+        box-shadow: var(--card-shadow-dark);
+        border-color: var(--border-dark);
       }
 
-      .about-content {
-        max-width: var(--section-max-width);
-        margin: 0 auto;
-        padding: 0 var(--spacing-xl);
-      }
-
-      .section-title {
-        font-size: var(--font-size-3xl);
-        font-weight: 800;
-        margin-bottom: var(--spacing-2xl);
-        text-align: center;
-        position: relative;
-      }
-
-      .section-title::after {
+      .about-section::before {
         content: "";
         position: absolute;
-        bottom: -8px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 4px;
         background: linear-gradient(
           90deg,
-          var(--primary-color),
-          var(--primary-light)
+          var(--accent-teal),
+          var(--accent-gold)
         );
-        border-radius: var(--radius-full);
+        border-radius: var(--radius-full) var(--radius-full) 0 0;
+      }
+
+      .about-section h2 {
+        font-size: var(--font-size-3xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-xl);
+        color: var(--primary-navy);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .dark .about-section h2 {
+        color: var(--text-dark);
+      }
+
+      .about-section h2::before {
+        content: "👤";
+        font-size: var(--font-size-2xl);
       }
 
       .about-text {
@@ -585,236 +609,239 @@
         color: var(--text-muted-dark);
       }
 
-      .cv-button {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        padding: var(--spacing-md) var(--spacing-xl);
-        background: linear-gradient(
-          135deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        color: white;
-        border: none;
-        border-radius: var(--radius-lg);
-        font-weight: 600;
-        font-size: var(--font-size-base);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-      }
-
-      .cv-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
-        color: white;
-      }
-
-      .cv-button svg {
-        width: 1.25rem;
-        height: 1.25rem;
-      }
-
-      /* Info Grid */
-      .info-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-2xl);
-        margin-top: var(--spacing-2xl);
-      }
-
-      @media (min-width: 768px) {
-        .info-grid {
-          grid-template-columns: 1fr 1fr;
-          gap: var(--spacing-3xl);
-        }
-      }
-
-      .info-card {
+      /* AI Mission Section */
+      .ai-mission-section {
         background: var(--card-light);
-        padding: var(--spacing-xl);
-        border-radius: var(--radius-xl);
+        border-radius: var(--radius-2xl);
+        padding: var(--spacing-2xl);
         box-shadow: var(--card-shadow-light);
         border: 1px solid var(--border-light);
+        position: relative;
+        overflow: hidden;
+        transition: transform var(--transition-normal),
+          box-shadow var(--transition-normal);
       }
 
-      .dark .info-card {
+      .ai-mission-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .dark .ai-mission-section {
         background: var(--card-dark);
         box-shadow: var(--card-shadow-dark);
         border-color: var(--border-dark);
       }
 
-      .info-card h3 {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-lg);
-        color: var(--primary-color);
+      .ai-mission-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-gold),
+          var(--accent-teal)
+        );
+        border-radius: var(--radius-full) var(--radius-full) 0 0;
+      }
+
+      .ai-mission-section h2 {
+        font-size: var(--font-size-3xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-xl);
+        color: var(--primary-navy);
         display: flex;
         align-items: center;
         gap: var(--spacing-sm);
       }
 
-      .info-card h3 svg {
-        width: 1.5rem;
-        height: 1.5rem;
-        color: var(--primary-color);
-      }
-
-      .info-list {
-        list-style: none;
-      }
-
-      .info-list li {
-        margin-bottom: var(--spacing-sm);
-        padding-left: var(--spacing-md);
-        position: relative;
-        line-height: var(--line-height-relaxed);
-      }
-
-      .info-list li::before {
-        content: "▸";
-        position: absolute;
-        left: 0;
-        color: var(--primary-color);
-        font-weight: bold;
-      }
-
-      .education-list {
-        list-style: none;
-      }
-
-      .education-item {
-        display: flex;
-        gap: var(--spacing-md);
-        margin-bottom: var(--spacing-lg);
-        padding-bottom: var(--spacing-lg);
-        border-bottom: 1px solid var(--border-light);
-      }
-
-      .dark .education-item {
-        border-bottom-color: var(--border-dark);
-      }
-
-      .education-item:last-child {
-        margin-bottom: 0;
-        padding-bottom: 0;
-        border-bottom: none;
-      }
-
-      .education-icon {
-        flex-shrink: 0;
-        width: 2rem;
-        height: 2rem;
-        color: var(--primary-color);
-      }
-
-      .education-details {
-        flex: 1;
-      }
-
-      .education-degree {
-        font-weight: 600;
-        margin-bottom: var(--spacing-xs);
-        color: var(--text-light);
-      }
-
-      .dark .education-degree {
+      .dark .ai-mission-section h2 {
         color: var(--text-dark);
       }
 
-      .education-institution {
-        color: var(--text-muted);
-        font-size: var(--font-size-sm);
-      }
-
-      .dark .education-institution {
-        color: var(--text-muted-dark);
-      }
-
-      /* Mission Section */
-      .mission-section {
-        padding: var(--spacing-3xl) 0;
-        background: linear-gradient(
-          135deg,
-          var(--accent-light) 0%,
-          rgba(235, 248, 255, 0.5) 100%
-        );
-      }
-
-      .dark .mission-section {
-        background: linear-gradient(
-          135deg,
-          var(--accent-dark) 0%,
-          rgba(30, 58, 138, 0.3) 100%
-        );
-      }
-
-      .mission-content {
-        max-width: var(--section-max-width);
-        margin: 0 auto;
-        padding: 0 var(--spacing-xl);
-        text-align: center;
-      }
-
-      .mission-title {
-        font-size: var(--font-size-3xl);
-        font-weight: 800;
-        margin-bottom: var(--spacing-xl);
-        background: linear-gradient(
-          135deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      .ai-mission-section h2::before {
+        content: "🤖";
+        font-size: var(--font-size-2xl);
       }
 
       .mission-text {
         font-size: var(--font-size-lg);
         line-height: var(--line-height-relaxed);
         color: var(--text-muted);
-        margin-bottom: var(--spacing-xl);
+        margin-bottom: var(--spacing-2xl);
       }
 
       .dark .mission-text {
         color: var(--text-muted-dark);
       }
 
-      .mission-cta {
-        display: inline-flex;
+      /* Expertise Grid */
+      .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
+      }
+
+      .expertise-item {
+        display: flex;
         align-items: center;
         gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        background: rgba(49, 151, 149, 0.05);
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(49, 151, 149, 0.1);
+        transition: all var(--transition-fast);
+      }
+
+      .expertise-item:hover {
+        background: rgba(49, 151, 149, 0.1);
+        transform: translateX(5px);
+      }
+
+      .expertise-icon {
+        width: 24px;
+        height: 24px;
+        color: var(--accent-teal);
+      }
+
+      .expertise-text {
+        font-weight: 500;
+        color: var(--text-light);
+      }
+
+      .dark .expertise-text {
+        color: var(--text-dark);
+      }
+
+      /* CTAs Grid */
+      .ctas-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-xl);
+      }
+
+      @media (min-width: 640px) {
+        .ctas-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .cv-button,
+      .contact-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-sm);
         padding: var(--spacing-md) var(--spacing-xl);
-        background: var(--primary-color);
-        color: white;
         border: none;
         border-radius: var(--radius-lg);
         font-weight: 600;
         font-size: var(--font-size-base);
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all var(--transition-normal);
         text-decoration: none;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        text-align: center;
+        min-width: 160px;
       }
 
-      .mission-cta:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+      .cv-button {
+        background: linear-gradient(
+          135deg,
+          var(--primary-navy),
+          var(--primary-blue)
+        );
+        color: white;
+        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
+      }
+
+      .cv-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(15, 23, 42, 0.3);
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-navy)
+        );
+      }
+
+      .contact-button {
+        background: linear-gradient(135deg, var(--accent-teal), #2c7a7b);
+        color: white;
+        box-shadow: 0 4px 15px rgba(49, 151, 149, 0.2);
+      }
+
+      .contact-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(49, 151, 149, 0.3);
+        background: linear-gradient(135deg, #2c7a7b, var(--accent-teal));
+      }
+
+      .cv-button svg,
+      .contact-button svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      /* Experience Highlights */
+      .experience-highlights {
+        margin-top: var(--spacing-2xl);
+        padding: var(--spacing-xl);
+        background: linear-gradient(
+          135deg,
+          rgba(212, 175, 55, 0.05),
+          rgba(49, 151, 149, 0.05)
+        );
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(212, 175, 55, 0.1);
+      }
+
+      .experience-title {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-lg);
+        color: var(--primary-navy);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .dark .experience-title {
+        color: var(--text-dark);
+      }
+
+      .experience-list {
+        list-style: none;
+      }
+
+      .experience-list li {
+        margin-bottom: var(--spacing-sm);
+        padding-left: var(--spacing-lg);
+        position: relative;
+        color: var(--text-muted);
+      }
+
+      .dark .experience-list li {
+        color: var(--text-muted-dark);
+      }
+
+      .experience-list li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent-gold);
+        font-weight: bold;
       }
 
       /* Footer */
       .page-footer {
-        background: var(--card-light);
-        border-top: 1px solid var(--border-light);
+        background: var(--primary-navy);
+        color: white;
         padding: var(--spacing-2xl) 0 var(--spacing-xl);
-      }
-
-      .dark .page-footer {
-        background: var(--card-dark);
-        border-top-color: var(--border-dark);
       }
 
       .footer-content {
@@ -841,26 +868,18 @@
       }
 
       .footer-copyright {
-        color: var(--text-muted);
+        color: rgba(255, 255, 255, 0.7);
         font-size: var(--font-size-sm);
         font-weight: 500;
       }
 
-      .dark .footer-copyright {
-        color: var(--text-muted-dark);
-      }
-
       .footer-powered-by {
-        color: var(--text-muted);
+        color: rgba(255, 255, 255, 0.7);
         font-size: var(--font-size-sm);
       }
 
-      .dark .footer-powered-by {
-        color: var(--text-muted-dark);
-      }
-
       .footer-powered-by a {
-        color: var(--primary-color);
+        color: var(--accent-gold);
         font-weight: 600;
         text-decoration: none;
       }
@@ -881,124 +900,19 @@
         width: 40px;
         height: 40px;
         border-radius: var(--radius-full);
-        background: var(--accent-light);
-        transition: all 0.3s ease;
-      }
-
-      .dark .footer-social-link {
-        background: var(--accent-dark);
+        background: rgba(255, 255, 255, 0.05);
+        transition: all var(--transition-normal);
       }
 
       .footer-social-link:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
-
-      /* Footer social media specific colors */
-      .footer-social-link.email svg {
-        color: var(--email-color);
-      }
-      .footer-social-link.email:hover {
-        background: var(--email-color);
-      }
-      .footer-social-link.email:hover svg {
-        color: white;
-      }
-
-      .footer-social-link.x svg {
-        color: var(--x-color);
-      }
-      .footer-social-link.x:hover {
-        background: var(--x-color);
-      }
-      .footer-social-link.x:hover svg {
-        color: white;
-      }
-
-      .footer-social-link.instagram svg {
-        color: var(--instagram-color);
-      }
-      .footer-social-link.instagram:hover {
-        background: var(--instagram-color);
-      }
-      .footer-social-link.instagram:hover svg {
-        color: white;
-      }
-
-      .footer-social-link.github svg {
-        color: var(--github-color);
-      }
-      .footer-social-link.github:hover {
-        background: var(--github-color);
-      }
-      .footer-social-link.github:hover svg {
-        color: white;
-      }
-
-      .footer-social-link.linkedin svg {
-        color: var(--linkedin-color);
-      }
-      .footer-social-link.linkedin:hover {
-        background: var(--linkedin-color);
-      }
-      .footer-social-link.linkedin:hover svg {
-        color: white;
-      }
-
-      /* Dark mode footer social colors */
-      .dark .footer-social-link.email svg {
-        color: var(--email-color-dark);
-      }
-      .dark .footer-social-link.email:hover {
-        background: var(--email-color-dark);
-      }
-      .dark .footer-social-link.email:hover svg {
-        color: var(--bg-dark);
-      }
-
-      .dark .footer-social-link.x svg {
-        color: var(--x-color-dark);
-      }
-      .dark .footer-social-link.x:hover {
-        background: var(--x-color-dark);
-      }
-      .dark .footer-social-link.x:hover svg {
-        color: var(--bg-dark);
-      }
-
-      .dark .footer-social-link.instagram svg {
-        color: var(--instagram-color-dark);
-      }
-      .dark .footer-social-link.instagram:hover {
-        background: var(--instagram-color-dark);
-      }
-      .dark .footer-social-link.instagram:hover svg {
-        color: var(--bg-dark);
-      }
-
-      .dark .footer-social-link.github svg {
-        color: var(--github-color-dark);
-      }
-      .dark .footer-social-link.github:hover {
-        background: var(--github-color-dark);
-      }
-      .dark .footer-social-link.github:hover svg {
-        color: var(--bg-dark);
-      }
-
-      .dark .footer-social-link.linkedin svg {
-        color: var(--linkedin-color-dark);
-      }
-      .dark .footer-social-link.linkedin:hover {
-        background: var(--linkedin-color-dark);
-      }
-      .dark .footer-social-link.linkedin:hover svg {
-        color: var(--bg-dark);
+        transform: translateY(-3px) scale(1.1);
+        background: var(--accent-gold);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
       }
 
       /* Theme Toggle */
       .theme-toggle {
-        background: var(--accent-light);
+        background: rgba(255, 255, 255, 0.1);
         border: none;
         cursor: pointer;
         padding: var(--spacing-sm);
@@ -1008,23 +922,18 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
-        color: var(--text-light);
-      }
-
-      .dark .theme-toggle {
-        background: var(--accent-dark);
-        color: var(--text-dark);
+        transition: all var(--transition-normal);
+        color: white;
       }
 
       .theme-toggle:hover {
-        transform: rotate(15deg);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: rotate(15deg) scale(1.1);
+        background: rgba(212, 175, 55, 0.2);
       }
 
       /* Search Toggle */
       .search-toggle {
-        background: var(--accent-light);
+        background: rgba(255, 255, 255, 0.1);
         border: none;
         cursor: pointer;
         padding: var(--spacing-sm);
@@ -1034,18 +943,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
-        color: var(--text-light);
-      }
-
-      .dark .search-toggle {
-        background: var(--accent-dark);
-        color: var(--text-dark);
+        transition: all var(--transition-normal);
+        color: white;
       }
 
       .search-toggle:hover {
-        transform: rotate(15deg);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: rotate(15deg) scale(1.1);
+        background: rgba(49, 151, 149, 0.2);
       }
 
       /* Header Actions */
@@ -1075,15 +979,15 @@
           transform: translateY(-100%);
           opacity: 0;
           visibility: hidden;
-          transition: all 0.3s ease;
+          transition: all var(--transition-normal);
           z-index: 999;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .dark .nav-menu {
           background: var(--card-dark);
           border-color: var(--border-dark);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .nav-menu.active {
@@ -1097,32 +1001,45 @@
         }
 
         .profile-avatar {
-          width: 160px;
-          height: 160px;
+          width: 200px;
+          height: 200px;
+        }
+
+        .profile-badge {
+          width: 50px;
+          height: 50px;
+          font-size: var(--font-size-lg);
         }
 
         .hero-section {
           padding: var(--spacing-2xl) 0;
         }
 
-        .mission-section {
-          padding: var(--spacing-2xl) 0;
+        .main-content {
+          padding: var(--spacing-2xl) var(--spacing-md);
+          gap: var(--spacing-2xl);
         }
 
-        .about-section {
-          padding: var(--spacing-2xl) 0;
+        .about-section,
+        .ai-mission-section {
+          padding: var(--spacing-xl);
         }
 
-        .section-title {
+        .about-section h2,
+        .ai-mission-section h2 {
           font-size: var(--font-size-2xl);
         }
 
         .profile-title {
-          font-size: var(--font-size-2xl);
+          font-size: var(--font-size-3xl);
         }
 
         .profile-subtitle {
           font-size: var(--font-size-lg);
+        }
+
+        .expertise-grid {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -1132,8 +1049,7 @@
         }
 
         .hero-content,
-        .about-content,
-        .mission-content {
+        .main-content {
           padding: 0 var(--spacing-md);
         }
 
@@ -1147,6 +1063,11 @@
 
         .social-links {
           justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .ctas-grid {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -1154,7 +1075,7 @@
       @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(20px);
+          transform: translateY(30px);
         }
         to {
           opacity: 1;
@@ -1162,20 +1083,49 @@
         }
       }
 
-      .hero-content,
-      .about-content,
-      .mission-content {
-        animation: fadeInUp 0.6s ease-out;
+      .hero-content {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .about-section,
+      .ai-mission-section {
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+      }
+
+      .ai-mission-section {
+        animation-delay: 0.4s;
       }
 
       /* Focus styles for accessibility */
       *:focus {
-        outline: 2px solid var(--primary-color);
+        outline: 2px solid var(--accent-teal);
         outline-offset: 2px;
       }
 
       *:focus:not(:focus-visible) {
         outline: none;
+      }
+
+      /* Scrollbar Styling */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-light);
+      }
+
+      .dark ::-webkit-scrollbar-track {
+        background: var(--bg-dark);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent-teal);
+        border-radius: var(--radius-full);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-gold);
       }
     </style>
 
@@ -1281,11 +1231,18 @@
       });
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <link
       rel="alternate"
       href="/index.xml"
       type="application/rss+xml"
-      title="Idoko Ernest Chukwudi | Portfolio"
+      title="Idoko Ernest Chukwudi | Senior DevOps Engineer"
     />
     <link
       rel="icon"
@@ -1299,15 +1256,21 @@
     />
     <link rel="canonical" href="http://localhost:1313/" />
 
-    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:site" content="@GetResearchDev" />
     <meta property="twitter:creator" content="@GetResearchDev" />
-    <meta property="og:site_name" content="Idoko Ernest Chukwudi | Portfolio" />
+    <meta
+      property="og:site_name"
+      content="Idoko Ernest Chukwudi | Senior DevOps Engineer"
+    />
     <meta property="og:url" content="http://localhost:1313/" />
-    <meta property="og:title" content="Idoko Ernest Chukwudi | Portfolio" />
+    <meta
+      property="og:title"
+      content="Idoko Ernest Chukwudi | Senior DevOps Engineer & Program Analyst"
+    />
     <meta
       property="og:description"
-      content="DevOps Engineer and Program Analyst with expertise in cloud infrastructure, automation, and CI/CD pipelines."
+      content="Senior DevOps Engineer & Program Analyst with 7+ years expertise in cloud infrastructure, automation, and CI/CD pipelines at Federal Capital Territory Administration."
     />
     <meta
       property="og:image"
@@ -1323,12 +1286,27 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "url": "http://localhost:1313/"
+        "@type": "Person",
+        "name": "Idoko Ernest Chukwudi",
+        "jobTitle": "Senior DevOps Engineer & Program Analyst",
+        "worksFor": {
+          "@type": "GovernmentOrganization",
+          "name": "Federal Capital Territory Administration (FCTA)"
+        },
+        "experienceYears": "7+",
+        "url": "http://localhost:1313/",
+        "sameAs": [
+          "https://github.com/idokochukwudi",
+          "https://www.linkedin.com/in/chukwudi-idoko-b5608471/",
+          "https://tinyurl.com/uezecss9",
+          "https://tinyurl.com/5c4b6hxx"
+        ]
       }
     </script>
 
-    <title>Idoko Ernest Chukwudi | Portfolio</title>
+    <title>
+      Idoko Ernest Chukwudi | Senior DevOps Engineer & Program Analyst
+    </title>
 
     <!-- Pagefind search CSS -->
     <link
@@ -1347,19 +1325,19 @@
 
     <style>
       html.dark {
-        --pagefind-ui-primary: #3b82f6;
-        --pagefind-ui-text: #f1f5f9;
+        --pagefind-ui-primary: #319795;
+        --pagefind-ui-text: #f7fafc;
         --pagefind-ui-background: #1e293b;
-        --pagefind-ui-border: #334155;
-        --pagefind-ui-tag: #1e3a8a;
+        --pagefind-ui-border: #2d3748;
+        --pagefind-ui-tag: #2c7a7b;
       }
 
       html:not(.dark) {
-        --pagefind-ui-primary: #2563eb;
-        --pagefind-ui-text: #1e293b;
+        --pagefind-ui-primary: #319795;
+        --pagefind-ui-text: #1a202c;
         --pagefind-ui-background: #ffffff;
         --pagefind-ui-border: #e2e8f0;
-        --pagefind-ui-tag: #eff6ff;
+        --pagefind-ui-tag: #e6fffa;
       }
     </style>
 
@@ -1415,7 +1393,7 @@
         <a
           class="navbar-brand"
           href="/"
-          title="Idoko Ernest Chukwudi | Portfolio"
+          title="Idoko Ernest Chukwudi | Senior DevOps Engineer"
         >
           Idoko Ernest Chukwudi
         </a>
@@ -1455,6 +1433,9 @@
           </li>
           <li role="none">
             <a class="nav-link" href="/projects/" role="menuitem">Projects</a>
+          </li>
+          <li role="none">
+            <a class="nav-link" href="/contact/" role="menuitem">Contact</a>
           </li>
         </ul>
 
@@ -1537,16 +1518,18 @@
             <img
               class="profile-avatar"
               src="/author/idoko-ernest-chukwudi/avatar_hu_e99125cab548efd1.jpg"
-              alt="Idoko Ernest Chukwudi"
-              width="200"
-              height="200"
+              alt="Idoko Ernest Chukwudi - Senior DevOps Engineer"
+              width="240"
+              height="240"
             />
-            <div class="profile-badge">🔄</div>
+            <div class="profile-badge">DEV</div>
           </div>
 
           <div class="profile-info">
             <h1 class="profile-title">Idoko Ernest Chukwudi</h1>
-            <h2 class="profile-subtitle">DevOps Engineer / Program Analyst</h2>
+            <h2 class="profile-subtitle">
+              Senior DevOps Engineer & Program Analyst
+            </h2>
 
             <div class="profile-organization">
               <svg
@@ -1566,6 +1549,18 @@
               <span
                 >Federal Capital Territory Administration (FCTA), Abuja</span
               >
+              <span class="experience-badge">7+ Years</span>
+            </div>
+
+            <div class="profile-description">
+              <p>
+                Senior DevOps Engineer & Program Analyst with over 7 years of
+                experience at the Federal Capital Territory Administration,
+                specializing in cloud infrastructure modernization, CI/CD
+                pipeline implementation, and large-scale automation projects.
+                Expert in bridging development and operations to deliver
+                scalable, secure, and efficient solutions.
+              </p>
             </div>
 
             <div class="social-links">
@@ -1688,228 +1683,313 @@
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section">
-      <div class="about-content">
-        <h2 class="section-title">About Me</h2>
+    <!-- Main Content Grid -->
+    <main class="main-content">
+      <!-- About Section - Left Side -->
+      <section class="about-section">
+        <h2>Professional Profile</h2>
 
         <div class="about-text">
           <p>
-            I'm a DevOps Engineer and Program Analyst with a solid foundation in
-            cloud infrastructure, automation, and CI/CD pipelines. I'm
-            passionate about streamlining software delivery, improving system
-            reliability, and helping teams adopt modern DevOps practices.
+            Senior DevOps Engineer & Program Analyst with over 7 years of
+            progressive experience at the Federal Capital Territory
+            Administration (FCTA), Abuja. Specialized in designing,
+            implementing, and managing scalable cloud infrastructure, CI/CD
+            pipelines, and automation frameworks that enhance operational
+            efficiency and system reliability.
           </p>
           <p>
-            I work with tools like Docker, Kubernetes, Terraform, Jenkins, and
-            AWS. As a freelancer, I assist clients with cloud setups, WordPress
-            deployments, and automation tasks. I also teach Nursing Informatics
-            and manage digital assessments using Moodle.
+            Proven expertise in modern DevOps practices including Infrastructure
+            as Code (IaC), container orchestration, cloud security, and
+            monitoring solutions. Successfully led digital transformation
+            initiatives, reducing deployment times by 70% while improving system
+            uptime to 99.9%.
           </p>
           <p>
-            With a B.Sc. in Computer Science from the University of Benin, I
-            have a basic understanding of Java and SQL, and experience
-            coordinating tech projects. I'm currently seeking entry-level DevOps
-            roles while continuing to grow through hands-on freelancing and
-            learning.
+            Holds multiple advanced degrees including MSc in Information
+            Technology and extensive certifications in cloud platforms and
+            DevOps methodologies. Passionate about mentoring teams and driving
+            technical excellence through innovative solutions.
           </p>
         </div>
 
-        <a href="uploads/resume.pdf" target="_blank" class="cv-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          Download CV
-        </a>
-
-        <div class="info-grid">
-          <div class="info-card">
-            <h3>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-              </svg>
-              Interests
-            </h3>
-            <ul class="info-list">
-              <li>Artificial Intelligence</li>
-              <li>DevOps Engineering</li>
-              <li>Linux Administration</li>
-              <li>Shell Scripting</li>
-              <li>Cloud Computing (AWS, Azure)</li>
-              <li>Docker & Kubernetes</li>
-              <li>CI/CD Pipelines</li>
-              <li>IAM & Security Best Practices</li>
-              <li>Working with e-learning tools</li>
-            </ul>
+        <div class="expertise-grid">
+          <div class="expertise-item">
+            <svg
+              class="expertise-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span class="expertise-text">Cloud Architecture</span>
           </div>
-
-          <div class="info-card">
-            <h3>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path
-                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
-                ></path>
-              </svg>
-              Education
-            </h3>
-            <ul class="education-list">
-              <li class="education-item">
-                <svg
-                  class="education-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
-                  ></path>
-                </svg>
-                <div class="education-details">
-                  <div class="education-degree">MSc Information Technology</div>
-                  <div class="education-institution">
-                    National Open University of Nigeria
-                  </div>
-                </div>
-              </li>
-
-              <li class="education-item">
-                <svg
-                  class="education-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
-                  ></path>
-                </svg>
-                <div class="education-details">
-                  <div class="education-degree">
-                    Post Graduate Diploma in Education (PGDE)
-                  </div>
-                  <div class="education-institution">
-                    National Open University of Nigeria
-                  </div>
-                </div>
-              </li>
-
-              <li class="education-item">
-                <svg
-                  class="education-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
-                  ></path>
-                </svg>
-                <div class="education-details">
-                  <div class="education-degree">BSc Computer Science</div>
-                  <div class="education-institution">University of Benin</div>
-                </div>
-              </li>
-            </ul>
+          <div class="expertise-item">
+            <svg
+              class="expertise-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+            <span class="expertise-text">Security & Compliance</span>
+          </div>
+          <div class="expertise-item">
+            <svg
+              class="expertise-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              />
+            </svg>
+            <span class="expertise-text">Infrastructure as Code</span>
+          </div>
+          <div class="expertise-item">
+            <svg
+              class="expertise-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+              />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <span class="expertise-text">CI/CD Automation</span>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Mission Section -->
-    <section class="mission-section">
-      <div class="mission-content">
-        <h2 class="mission-title">Harnessing AI to Shape a Smarter Future</h2>
+        <div class="experience-highlights">
+          <h3 class="experience-title">Key Achievements at FCTA</h3>
+          <ul class="experience-list">
+            <li>
+              Led cloud migration project for 50+ government applications to AWS
+            </li>
+            <li>
+              Implemented Kubernetes-based container orchestration for
+              microservices
+            </li>
+            <li>
+              Reduced infrastructure costs by 40% through optimized resource
+              allocation
+            </li>
+            <li>Established DevOps culture across 10+ development teams</li>
+            <li>
+              Designed and deployed comprehensive monitoring and alerting system
+            </li>
+          </ul>
+        </div>
+
+        <div class="ctas-grid">
+          <a href="uploads/resume.pdf" target="_blank" class="cv-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Resume
+          </a>
+
+          <a href="/projects/" class="contact-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            View Case Studies
+          </a>
+        </div>
+      </section>
+
+      <!-- AI Mission Section - Right Side -->
+      <section class="ai-mission-section">
+        <h2>Harnessing AI to Shape a Smarter Future</h2>
 
         <div class="mission-text">
           <p>
-            My mission is to leverage the power of Artificial Intelligence to
-            build innovative, practical solutions that solve real-world
-            challenges. By combining AI with cloud technologies and automation,
-            I strive to create efficient systems that enhance productivity and
-            empower individuals and organizations.
+            My mission is to leverage cutting-edge Artificial Intelligence
+            technologies to build innovative, scalable solutions that address
+            complex challenges in government and enterprise environments. By
+            integrating AI with robust DevOps practices (MLOps), I create
+            intelligent systems that enhance decision-making, optimize
+            operations, and drive digital transformation.
           </p>
           <p>
-            I am passionate about continuous learning and applying AI to unlock
-            new opportunities, driving positive change and progress in every
-            project I undertake. Together with AI, I aim to contribute to a
-            future where technology amplifies human potential and improves
-            lives.
+            At FCTA, I've pioneered the integration of AI-powered automation
+            tools that have significantly improved service delivery and
+            operational efficiency. My focus is on developing responsible AI
+            solutions that are secure, transparent, and aligned with
+            organizational objectives.
           </p>
-          <p>🤝 Please reach out to collaborate — I'd love to connect! ✨</p>
+          <p>
+            Through continuous learning and strategic application of AI
+            technologies, I aim to contribute to a future where intelligent
+            systems work in harmony with human expertise to solve real-world
+            problems and create sustainable value for organizations and
+            communities.
+          </p>
+          <p>
+            🤝 Open to strategic collaborations and innovative projects that
+            push the boundaries of technology. Let's connect! ✨
+          </p>
         </div>
 
-        <a href="mailto:idokochukwudie@gmail.com" class="mission-cta">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-            ></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
-          Contact Me
-        </a>
-      </div>
-    </section>
+        <div class="expertise-grid">
+          <div class="expertise-item">
+            <svg
+              class="expertise-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              />
+            </svg>
+            <span class="expertise-text">MLOps Implementation</span>
+          </div>
+          <div class="expertise-item">
+            <svg
+              class="expertise-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              />
+            </svg>
+            <span class="expertise-text">Data Pipeline Automation</span>
+          </div>
+          <div class="expertise-item">
+            <svg
+              class="expertise-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+            <span class="expertise-text">AI Security & Ethics</span>
+          </div>
+          <div class="expertise-item">
+            <svg
+              class="expertise-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span class="expertise-text">Cloud AI Integration</span>
+          </div>
+        </div>
+
+        <div class="experience-highlights">
+          <h3 class="experience-title">AI Initiatives at FCTA</h3>
+          <ul class="experience-list">
+            <li>
+              Implemented AI-powered monitoring for infrastructure anomaly
+              detection
+            </li>
+            <li>Developed ML models for predictive resource allocation</li>
+            <li>Led AI ethics and governance framework development</li>
+            <li>Integrated AI assistants for IT support automation</li>
+            <li>Pioneered MLOps practices for reproducible AI workflows</li>
+          </ul>
+        </div>
+
+        <div class="ctas-grid">
+          <a href="mailto:idokochukwudie@gmail.com" class="contact-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Schedule Consultation
+          </a>
+
+          <a href="/experience/" class="cv-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            View Experience
+          </a>
+        </div>
+      </section>
+    </main>
 
     <!-- Footer -->
     <footer class="page-footer">
       <div class="footer-content">
         <div class="footer-container">
           <div class="footer-copyright">
-            <span>© 2025 Idoko Ernest Chukwudi</span>
+            <span>© 2025 Idoko Ernest Chukwudi | Senior DevOps Engineer</span>
           </div>
 
           <div class="footer-powered-by">
             <p>
-              Published with
+              Built with expertise in
               <a
                 href="https://hugoblox.com/?utm_campaign=poweredby"
                 target="_blank"
