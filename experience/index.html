@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="generator" content="Hugo Blox Builder 0.3.1" />
-
     <meta name="author" content="Idoko Ernest Chukwudi" />
     <meta name="description" content="" />
-
     <title>Experience | Idoko Ernest Chukwudi | Portfolio</title>
 
     <!-- Favicon -->
@@ -26,13 +24,6 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="http://localhost:1313/experience/" />
 
-    <!-- Alternate Languages -->
-    <link
-      rel="alternate"
-      hreflang="en-us"
-      href="http://localhost:1313/experience/"
-    />
-
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:site_name" content="Idoko Ernest Chukwudi | Portfolio" />
     <meta property="og:url" content="http://localhost:1313/experience/" />
@@ -46,35 +37,15 @@
       content="http://localhost:1313/media/icon_hu_645fa481986063ef.png"
     />
     <meta property="og:locale" content="en-us" />
-    <meta
-      property="article:published_time"
-      content="2023-10-24T00:00:00+00:00"
-    />
-    <meta
-      property="article:modified_time"
-      content="2023-10-24T00:00:00+00:00"
-    />
 
     <!-- Twitter Meta Tags -->
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:site" content="@GetResearchDev" />
     <meta property="twitter:creator" content="@GetResearchDev" />
-    <meta
-      property="twitter:image"
-      content="http://localhost:1313/media/icon_hu_645fa481986063ef.png"
-    />
 
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="/css/themes/emerald.min.css" />
     <link href="/dist/wc.min.css" rel="stylesheet" />
-
-    <!-- Pagefind Search UI -->
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css"
-      integrity="sha256-vnZutBkxehTsdp0hbpd5v+jzc3yA54D0ug2vtXpBpII="
-    />
 
     <!-- Font Definition -->
     <style>
@@ -85,37 +56,727 @@
         font-display: swap;
         src: url(/dist/font/Inter.var.woff2) format(woff2);
       }
-    </style>
 
-    <!-- Additional Styles -->
-    <style>
-      @media (min-width: 1024px) {
-        /* Various responsive styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      html.dark {
-        --pagefind-ui-primary: #eeeeee;
-        --pagefind-ui-text: #eeeeee;
-        --pagefind-ui-background: #152028;
-        --pagefind-ui-border: #152028;
-        --pagefind-ui-tag: #152028;
+      :root {
+        --primary-color: #10b981;
+        --primary-dark: #059669;
+        --bg-light: #ffffff;
+        --bg-dark: #0f172a;
+        --text-light: #1e293b;
+        --text-dark: #f1f5f9;
+        --card-light: #f8fafc;
+        --card-dark: #1e293b;
+        --border-light: #e2e8f0;
+        --border-dark: #334155;
+        --accent-light: #f0fdf4;
+        --accent-dark: #064e3b;
+
+        /* Improved typography scale */
+        --font-size-xs: 0.75rem; /* 12px */
+        --font-size-sm: 0.875rem; /* 14px */
+        --font-size-base: 1rem; /* 16px */
+        --font-size-lg: 1.125rem; /* 18px */
+        --font-size-xl: 1.25rem; /* 20px */
+        --font-size-2xl: 1.5rem; /* 24px */
+        --font-size-3xl: 1.875rem; /* 30px */
+        --font-size-4xl: 2.25rem; /* 36px */
+
+        /* Line heights */
+        --line-height-tight: 1.25;
+        --line-height-snug: 1.375;
+        --line-height-normal: 1.5;
+        --line-height-relaxed: 1.625;
+
+        /* Spacing */
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 0.75rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+
+        /* Content width constraints */
+        --content-width: 1200px;
+        --text-max-width: 65ch;
+        --card-max-width: 800px;
+      }
+
+      html {
+        font-size: 16px;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: var(--line-height-relaxed);
+        font-size: var(--font-size-base);
+        color: var(--text-light);
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        min-height: 100vh;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      /* Dark mode */
+      .dark body {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: var(--text-dark);
+      }
+
+      /* Header Styles */
+      .page-header {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .dark .page-header {
+        background: rgba(15, 23, 42, 0.98);
+        border-bottom-color: var(--border-dark);
+      }
+
+      .navbar {
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: var(--spacing-md) var(--spacing-xl);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .navbar-brand {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        letter-spacing: -0.5px;
+      }
+
+      .navbar-brand:hover {
+        color: var(--primary-dark);
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: var(--spacing-lg);
+        list-style: none;
+      }
+
+      .nav-link {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: var(--font-size-base);
+      }
+
+      .dark .nav-link {
+        color: var(--text-dark);
+      }
+
+      .nav-link:hover {
+        background: var(--accent-light);
+        color: var(--primary-color);
+      }
+
+      .dark .nav-link:hover {
+        background: var(--accent-dark);
+      }
+
+      .nav-link.active {
+        background: var(--primary-color);
+        color: white;
+        font-weight: 600;
+      }
+
+      /* Main Content Container */
+      .page-body {
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: var(--spacing-2xl) var(--spacing-xl);
+        display: grid;
+        gap: var(--spacing-3xl);
+      }
+
+      /* Section Styling */
+      section {
+        max-width: var(--card-max-width);
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* Section Headers */
+      .section-title {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        margin-bottom: var(--spacing-2xl);
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--primary-dark) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.5px;
+        position: relative;
+        padding-bottom: var(--spacing-md);
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--primary-dark)
+        );
+        border-radius: 2px;
+      }
+
+      /* Timeline Styles - Improved readability */
+      .timeline {
+        position: relative;
+        padding-left: var(--spacing-xl);
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(
+          180deg,
+          var(--primary-color) 0%,
+          transparent 100%
+        );
+        border-radius: 1.5px;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: var(--spacing-2xl);
+        padding-left: var(--spacing-xl);
+        animation: fadeIn 0.6s ease-out;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-icon {
+        position: absolute;
+        left: -2.75rem;
+        top: 0;
+        width: 3rem;
+        height: 3rem;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+        transition: all 0.3s ease;
+        border: 3px solid white;
+      }
+
+      .dark .timeline-icon {
+        border-color: var(--bg-dark);
+      }
+
+      .timeline-item:hover .timeline-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .timeline-icon svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: white;
+      }
+
+      .timeline-content {
+        background: white;
+        padding: var(--spacing-xl);
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-light);
+        max-width: 100%;
+      }
+
+      .dark .timeline-content {
+        background: var(--card-dark);
+        border-color: var(--border-dark);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .timeline-content:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      }
+
+      .dark .timeline-content:hover {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      }
+
+      .timeline-title {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-xs);
+        color: var(--text-light);
+        line-height: var(--line-height-tight);
+      }
+
+      .dark .timeline-title {
+        color: var(--text-dark);
+      }
+
+      .timeline-company {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: var(--spacing-xs);
+        display: block;
+        font-size: var(--font-size-lg);
+      }
+
+      .timeline-date {
+        color: #64748b;
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-lg);
+        display: block;
+        font-weight: 500;
+        background: var(--accent-light);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 20px;
+        display: inline-block;
+      }
+
+      .dark .timeline-date {
+        background: var(--accent-dark);
+        color: #cbd5e1;
+      }
+
+      .timeline-description {
+        font-size: var(--font-size-base);
+        line-height: var(--line-height-relaxed);
+        color: #475569;
+      }
+
+      .dark .timeline-description {
+        color: #cbd5e1;
+      }
+
+      .timeline-description ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: var(--spacing-lg);
+      }
+
+      .timeline-description li {
+        position: relative;
+        padding-left: var(--spacing-xl);
+        margin-bottom: var(--spacing-md);
+        color: #475569;
+        line-height: var(--line-height-relaxed);
+      }
+
+      .dark .timeline-description li {
+        color: #cbd5e1;
+      }
+
+      .timeline-description li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+        font-weight: bold;
+        font-size: var(--font-size-lg);
+      }
+
+      /* Paragraphs in timeline */
+      .timeline-description p {
+        margin-bottom: var(--spacing-md);
+        max-width: var(--text-max-width);
+      }
+
+      /* Skills Section - Improved grid */
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-xl);
+        margin-top: var(--spacing-lg);
+      }
+
+      .skills-card {
+        background: white;
+        padding: var(--spacing-xl);
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--border-light);
+        transition: all 0.3s ease;
+        animation: fadeIn 0.6s ease-out;
+      }
+
+      .dark .skills-card {
+        background: var(--card-dark);
+        border-color: var(--border-dark);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .skills-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      }
+
+      .dark .skills-card:hover {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      }
+
+      .skills-card h3 {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-light);
+        padding-bottom: var(--spacing-sm);
+        border-bottom: 2px solid var(--border-light);
+      }
+
+      .dark .skills-card h3 {
+        color: var(--text-dark);
+        border-bottom-color: var(--border-dark);
+      }
+
+      .skill-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+        border-radius: 12px;
+        transition: all 0.2s ease;
+      }
+
+      .skill-item:hover {
+        background: var(--accent-light);
+        transform: translateX(4px);
+      }
+
+      .dark .skill-item:hover {
+        background: var(--accent-dark);
+      }
+
+      .skill-icon {
+        width: 2rem;
+        height: 2rem;
+        color: var(--primary-color);
+        flex-shrink: 0;
+      }
+
+      .skill-item span {
+        font-weight: 500;
+        color: var(--text-light);
+        font-size: var(--font-size-base);
+      }
+
+      .dark .skill-item span {
+        color: var(--text-dark);
+      }
+
+      /* Footer */
+      .page-footer {
+        background: white;
+        border-top: 1px solid var(--border-light);
+        margin-top: var(--spacing-3xl);
+        padding: var(--spacing-2xl) 0 var(--spacing-xl);
+      }
+
+      .dark .page-footer {
+        background: var(--card-dark);
+        border-top-color: var(--border-dark);
+      }
+
+      .footer-content {
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-xl);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-xl);
+      }
+
+      .footer-copyright {
+        color: #64748b;
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+      }
+
+      .footer-powered-by {
+        text-align: center;
+        font-size: var(--font-size-sm);
+        color: #64748b;
+        flex-grow: 1;
+      }
+
+      .footer-powered-by a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+
+      .footer-powered-by a:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+      }
+
+      .social-links {
+        display: flex;
+        gap: var(--spacing-lg);
+      }
+
+      .social-link {
+        color: #64748b;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: var(--accent-light);
+      }
+
+      .dark .social-link {
+        background: var(--accent-dark);
+      }
+
+      .social-link:hover {
+        color: var(--primary-color);
+        transform: translateY(-2px);
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .social-link svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      /* Footer Bottom */
+      .footer-bottom {
+        max-width: var(--content-width);
+        margin: var(--spacing-lg) auto 0;
+        padding: var(--spacing-lg) var(--spacing-xl) 0;
+        border-top: 1px solid var(--border-light);
+        text-align: center;
+        color: #64748b;
+        font-size: var(--font-size-sm);
+      }
+
+      .dark .footer-bottom {
+        border-top-color: var(--border-dark);
+      }
+
+      /* Theme Toggle */
+      .theme-toggle {
+        background: var(--accent-light);
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dark .theme-toggle {
+        background: var(--accent-dark);
+      }
+
+      .theme-toggle:hover {
+        background: rgba(16, 185, 129, 0.2);
+        transform: rotate(15deg);
+      }
+
+      .theme-toggle svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: var(--spacing-md);
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .section-title {
+          font-size: var(--font-size-2xl);
+          margin-bottom: var(--spacing-xl);
+        }
+
+        .page-body {
+          padding: var(--spacing-xl) var(--spacing-md);
+          gap: var(--spacing-2xl);
+        }
+
+        .timeline {
+          padding-left: var(--spacing-md);
+        }
+
+        .timeline-item {
+          padding-left: var(--spacing-lg);
+        }
+
+        .timeline-icon {
+          left: -2rem;
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+
+        .timeline-content {
+          padding: var(--spacing-lg);
+        }
+
+        .timeline-description li {
+          padding-left: var(--spacing-lg);
+        }
+
+        .skills-container {
+          grid-template-columns: 1fr;
+          gap: var(--spacing-lg);
+        }
+
+        .skills-card {
+          padding: var(--spacing-lg);
+        }
+
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+          gap: var(--spacing-lg);
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+
+        .theme-toggle {
+          position: fixed;
+          bottom: var(--spacing-xl);
+          right: var(--spacing-xl);
+          z-index: 100;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+      }
+
+      /* Large screens */
+      @media (min-width: 1400px) {
+        :root {
+          --content-width: 1400px;
+          --card-max-width: 900px;
+        }
+      }
+
+      /* Print styles */
+      @media print {
+        .page-header,
+        .theme-toggle,
+        .page-footer {
+          display: none;
+        }
+
+        body {
+          background: white !important;
+          color: black !important;
+        }
+
+        .page-body {
+          padding: 0;
+        }
+
+        .timeline-content,
+        .skills-card {
+          box-shadow: none;
+          border: 1px solid #ddd;
+        }
+      }
+
+      /* Smooth Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Focus styles for accessibility */
+      *:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+      }
+
+      *:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--accent-light);
+      }
+
+      .dark ::-webkit-scrollbar-track {
+        background: var(--accent-dark);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-dark);
       }
     </style>
 
     <!-- JavaScript -->
-    <script
-      src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload"
-      data-no-instant
-      defer
-    ></script>
-    <script
-      src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js"
-      integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="
-    ></script>
-    <script src="/js/hugo-blox-en.min.js" integrity=""></script>
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <!-- Initialization Scripts -->
     <script>
       // Theme management
       window.hbb = {
@@ -145,810 +806,559 @@
         }
       }
 
-      // Pagefind search initialization
-      window.hbb.pagefind = { baseUrl: "/" };
-
-      document.addEventListener("DOMContentLoaded", function () {
-        // Task list checkbox handling
-        let checkboxes = document.querySelectorAll(
-          "li input[type='checkbox'][disabled]"
-        );
-        checkboxes.forEach((e) => {
-          e.parentElement.parentElement.classList.add("task-list");
-        });
-
-        const liNodes = document.querySelectorAll(".task-list li");
-        liNodes.forEach((nodes) => {
-          let textNodes = Array.from(nodes.childNodes).filter(
-            (node) => node.nodeType === 3 && node.textContent.trim().length > 1
-          );
-          if (textNodes.length > 0) {
-            const span = document.createElement("label");
-            textNodes[0].after(span);
-            span.appendChild(nodes.querySelector("input[type='checkbox']"));
-            span.appendChild(textNodes[0]);
-          }
-        });
-
-        // Search initialization
-        new PagefindUI({
-          element: "#search",
-          showSubResults: true,
-          baseUrl: window.hbb.pagefind.baseUrl,
-          bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
-        });
-      });
-
-      // Search toggle functionality
       document.addEventListener("DOMContentLoaded", () => {
-        let element = document.getElementById("search");
-        let trigger = document.getElementById("search_toggle");
-
-        if (trigger) {
-          trigger.addEventListener("click", () => {
-            element.classList.toggle("hidden");
-            element.querySelector("input").value = "";
-            element.querySelector("input").focus();
-
-            if (!element.classList.contains("hidden")) {
-              let clear_trigger = document.querySelector(
-                ".pagefind-ui__search-clear"
-              );
-              if (
-                clear_trigger &&
-                !clear_trigger.hasAttribute("listenerOnClick")
-              ) {
-                clear_trigger.setAttribute("listenerOnClick", "true");
-                clear_trigger.addEventListener("click", () => {
-                  element.classList.toggle("hidden");
-                });
-              }
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+          themeToggle.addEventListener("click", () => {
+            const isDark = document.documentElement.classList.contains("dark");
+            if (isDark) {
+              window.hbb.setLightTheme();
+              localStorage.setItem("wc-color-theme", "light");
+            } else {
+              window.hbb.setDarkTheme();
+              localStorage.setItem("wc-color-theme", "dark");
             }
           });
         }
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
       });
     </script>
   </head>
 
-  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
-    <div id="page-bg"></div>
-
+  <body>
     <!-- Header -->
-    <div class="page-header sticky top-0 z-30">
-      <header id="site-header" class="header">
-        <nav class="navbar px-3 flex justify-left">
-          <!-- Brand/Home -->
-          <div class="order-0 h-100">
+    <header class="page-header">
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="navbar-brand" href="/">Idoko Ernest Chukwudi</a>
+
+        <ul class="nav-menu" role="menubar">
+          <li role="none">
+            <a class="nav-link" href="/" role="menuitem">Bio</a>
+          </li>
+          <li role="none">
             <a
-              class="navbar-brand"
-              href="/"
-              title="Idoko Ernest Chukwudi | Portfolio"
-              >Home</a
+              class="nav-link active"
+              href="/experience/"
+              role="menuitem"
+              aria-current="page"
+              >Experience</a
             >
-          </div>
+          </li>
+          <li role="none">
+            <a class="nav-link" href="/projects/" role="menuitem">Projects</a>
+          </li>
+        </ul>
 
-          <!-- Mobile Menu Toggle -->
-          <input id="nav-toggle" type="checkbox" class="hidden" />
-          <label
-            for="nav-toggle"
-            class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1"
+        <div style="display: flex; align-items: center; gap: 1rem">
+          <button
+            class="theme-toggle"
+            title="Toggle theme"
+            aria-label="Toggle dark/light mode"
           >
             <svg
-              id="show-button"
-              class="h-6 fill-current block"
-              viewBox="0 0 20 20"
+              id="moon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="dark:hidden"
             >
-              <title>Open Menu</title>
-              <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
             <svg
-              id="hide-button"
-              class="h-6 fill-current hidden"
-              viewBox="0 0 20 20"
+              id="sun"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="hidden dark:block"
             >
-              <title>Close Menu</title>
-              <polygon
-                points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
-                transform="rotate(45 10 10)"
-              ></polygon>
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
-          </label>
-
-          <!-- Navigation Menu -->
-          <ul
-            id="nav-menu"
-            class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left"
-          >
-            <li class="nav-item">
-              <a class="nav-link" href="/">Bio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/experience/">Experience</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/projects/">Projects</a>
-            </li>
-          </ul>
-
-          <!-- Right-side Actions -->
-          <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-            <!-- Search Button -->
-            <button
-              aria-label="search"
-              class="text-black hover:text-primary inline-block px-3 text-xl dark:text-white"
-              id="search_toggle"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="16"
-                width="16"
-                viewBox="0 0 512 512"
-                fill="currentColor"
-              >
-                <path
-                  d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-                />
-              </svg>
-            </button>
-
-            <!-- Theme Toggle -->
-            <div
-              class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300 [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white"
-            >
-              <button
-                class="theme-toggle mt-1"
-                accesskey="t"
-                title="appearance"
-              >
-                <svg
-                  id="moon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="dark:hidden"
-                >
-                  <path
-                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                  ></path>
-                </svg>
-                <svg
-                  id="sun"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="dark:block [&:not(dark)]:hidden"
-                >
-                  <circle cx="12" cy="12" r="5"></circle>
-                  <line x1="12" y1="1" x2="12" y2="3"></line>
-                  <line x1="12" y1="21" x2="12" y2="23"></line>
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                  <line x1="1" y1="12" x2="3" y2="12"></line>
-                  <line x1="21" y1="12" x2="23" y2="12"></line>
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </nav>
-      </header>
-
-      <!-- Search Box -->
-      <div id="search" class="hidden p-3"></div>
-    </div>
+          </button>
+        </div>
+      </nav>
+    </header>
 
     <!-- Main Content -->
-    <div class="page-body">
+    <main class="page-body">
       <!-- Experience Section -->
-      <section
-        id="section-resume-experience"
-        class="relative hbb-section blox-resume-experience"
-        style="padding: 5rem 0 5rem 0"
-      >
-        <div class="home-section-bg"></div>
-        <div class="flex flex-col items-center max-w-prose mx-auto">
-          <div class="flex flex-col lg:gap-x-6 w-100 px-6 sm:px-0">
-            <!-- Work Experience -->
-            <div class="w-full">
-              <h3 class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
-                Experience
-              </h3>
-              <ol
-                class="relative border-s border-gray-200 dark:border-gray-700"
+      <section aria-labelledby="experience-title">
+        <h2 id="experience-title" class="section-title">
+          Professional Experience
+        </h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-icon" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 256 256"
               >
-                <li class="mb-10 ms-6">
-                  <span
-                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                      class="w-5 h-5 text-primary-800 dark:text-primary-300"
-                    >
-                      <path
-                        d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <h3
-                    class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white text-wrap"
-                  >
-                    Programme Analyst
-                  </h3>
-                  <span
-                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >Federal Capital Territory Administration</span
-                  >
-                  <time
-                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >October 2018 – Present</time
-                  >
-                  <div
-                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 text-wrap prose prose-slate dark:prose-invert"
-                  >
-                    <p>Responsibilities include:</p>
-                    <ul>
-                      <li>
-                        Head ICT operations at the College, overseeing IT
-                        infrastructure including networks, hardware, software,
-                        backups, and technical support services.
-                      </li>
-                      <li>
-                        Manage digital learning platforms and coordinate CBT
-                        (Computer-Based Testing) systems for students and staff.
-                      </li>
-                      <li>
-                        Provide direct user support, resolve technical issues,
-                        manage application portals, and oversee tech-related
-                        procurement.
-                      </li>
-                      <li>
-                        Serve as Course Coordinator and Lecturer for "Use of
-                        Computer" (part of the nursing curriculum) – teach
-                        first-year students digital literacy, Microsoft Office,
-                        and internet usage; also design assessments and track
-                        student performance.
-                      </li>
-                      <li>
-                        Liaise with the FCTA central ICT unit on system
-                        upgrades, security updates, and technology
-                        implementation across departments.
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-
-                <li class="mb-10 ms-6">
-                  <span
-                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                      class="w-5 h-5 text-primary-800 dark:text-primary-300"
-                    >
-                      <path
-                        d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <h3
-                    class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white text-wrap"
-                  >
-                    Business Owner
-                  </h3>
-                  <span
-                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >Cloudit Technologies</span
-                  >
-                  <time
-                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >January 2010 – Present</time
-                  >
-                  <div
-                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 text-wrap prose prose-slate dark:prose-invert"
-                  >
-                    <p>Responsibilities include:</p>
-                    <ul>
-                      <li>
-                        Delivered technical support to clients for hardware,
-                        software, and system-related issues, ensuring minimal
-                        downtime and quick resolutions.
-                      </li>
-                      <li>
-                        Provided remote and in-person assistance to users via
-                        internet tools, improving customer satisfaction.
-                      </li>
-                      <li>
-                        Supported academic and business projects through
-                        document preparation and data analysis using Microsoft
-                        Office tools (Word, Excel, PowerPoint).
-                      </li>
-                      <li>
-                        Assisted clients with research and data sourcing,
-                        including market intelligence and digital tools
-                        adoption.
-                      </li>
-                      <li>
-                        Applied DevOps principles in managing small-scale
-                        infrastructure, automating repetitive IT tasks, and
-                        improving internal workflows.
-                      </li>
-                      <li>
-                        Deployed basic CI/CD pipelines for personal and client
-                        projects using GitHub Actions and shell scripting.
-                      </li>
-                      <li>
-                        Maintained and hosted project websites using GitHub
-                        Pages, showcasing portfolio and documentation for
-                        various IT solutions.
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ol>
+                <path
+                  d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
+                ></path>
+              </svg>
             </div>
-
-            <!-- Education -->
-            <div class="w-full">
-              <h3 class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
-                Education
-              </h3>
-              <ol
-                class="relative border-s border-gray-200 dark:border-gray-700"
+            <article class="timeline-content">
+              <h3 class="timeline-title">Programme Analyst</h3>
+              <span class="timeline-company"
+                >Federal Capital Territory Administration</span
               >
-                <li class="mb-10 ms-6">
-                  <span
-                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                      class="w-5 h-5 text-primary-800 dark:text-primary-300"
-                    >
-                      <path
-                        d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <h3
-                    class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"
-                  >
-                    MSc Information Technology
-                  </h3>
-                  <span
-                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >National Open University of Nigeria</span
-                  >
-                  <time
-                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >July 2019 – June 2025</time
-                  >
-                  <div
-                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert"
-                  >
-                    A results-oriented M.Sc. Information Technology graduate
-                    from NOUN with strong analytical and technical skills.
-                    Experienced in cloud computing, systems administration, and
-                    IT project implementation. Passionate about using modern
-                    technologies to solve real-world problems and drive digital
-                    transformation.
-                  </div>
-                </li>
+              <time class="timeline-date" datetime="2018-10"
+                >October 2018 – Present</time
+              >
+              <div class="timeline-description">
+                <ul>
+                  <li>
+                    Head ICT operations at the College, overseeing IT
+                    infrastructure including networks, hardware, software,
+                    backups, and technical support services
+                  </li>
+                  <li>
+                    Manage digital learning platforms and coordinate CBT
+                    (Computer-Based Testing) systems for students and staff
+                  </li>
+                  <li>
+                    Provide direct user support, resolve technical issues,
+                    manage application portals, and oversee tech-related
+                    procurement
+                  </li>
+                  <li>
+                    Serve as Course Coordinator and Lecturer for "Use of
+                    Computer" – teach first-year students digital literacy,
+                    Microsoft Office, and internet usage
+                  </li>
+                  <li>
+                    Liaise with the FCTA central ICT unit on system upgrades,
+                    security updates, and technology implementation across
+                    departments
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
 
-                <li class="mb-10 ms-6">
-                  <span
-                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                      class="w-5 h-5 text-primary-800 dark:text-primary-300"
-                    >
-                      <path
-                        d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <h3
-                    class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"
-                  >
-                    Post Graduate Diploma in Education (PGDE)
-                  </h3>
-                  <span
-                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >National Open University of Nigeria</span
-                  >
-                  <time
-                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >October 2021 – January 2023</time
-                  >
-                  <div
-                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert"
-                  >
-                    A certified education professional with a Postgraduate
-                    Diploma in Education, equipped with a solid foundation in
-                    instructional strategies, curriculum development, and
-                    classroom management. Passionate about learner-centered
-                    teaching and integrating technology to enhance educational
-                    delivery and student engagement.
-                  </div>
-                </li>
-
-                <li class="mb-10 ms-6">
-                  <span
-                    class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-primary-900"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                      class="w-5 h-5 text-primary-800 dark:text-primary-300"
-                    >
-                      <path
-                        d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <h3
-                    class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"
-                  >
-                    BSc Computer Science
-                  </h3>
-                  <span
-                    class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >University of Benin</span
-                  >
-                  <time
-                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300"
-                    >November 2009 – March 2015</time
-                  >
-                  <div
-                    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 prose prose-slate dark:prose-invert"
-                  >
-                    A versatile Computer Science graduate with a strong
-                    foundation in programming, data structures, and software
-                    development. Skilled in problem-solving and logical
-                    thinking, with hands-on experience in web development,
-                    databases, and basic networking. Committed to continuous
-                    learning and applying technical knowledge to real-world
-                    challenges.
-                  </div>
-                </li>
-              </ol>
+          <div class="timeline-item">
+            <div class="timeline-icon" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
+                ></path>
+              </svg>
             </div>
+            <article class="timeline-content">
+              <h3 class="timeline-title">Business Owner</h3>
+              <span class="timeline-company">Cloudit Technologies</span>
+              <time class="timeline-date" datetime="2010-01"
+                >January 2010 – Present</time
+              >
+              <div class="timeline-description">
+                <ul>
+                  <li>
+                    Delivered technical support to clients for hardware,
+                    software, and system-related issues, ensuring minimal
+                    downtime and quick resolutions
+                  </li>
+                  <li>
+                    Provided remote and in-person assistance to users via
+                    internet tools, improving customer satisfaction
+                  </li>
+                  <li>
+                    Supported academic and business projects through document
+                    preparation and data analysis using Microsoft Office tools
+                  </li>
+                  <li>
+                    Assisted clients with research and data sourcing, including
+                    market intelligence and digital tools adoption
+                  </li>
+                  <li>
+                    Applied DevOps principles in managing small-scale
+                    infrastructure, automating repetitive IT tasks
+                  </li>
+                  <li>
+                    Deployed basic CI/CD pipelines for personal and client
+                    projects using GitHub Actions and shell scripting
+                  </li>
+                  <li>
+                    Maintained and hosted project websites using GitHub Pages,
+                    showcasing portfolio and documentation
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section aria-labelledby="education-title">
+        <h2 id="education-title" class="section-title">Education</h2>
+
+        <div class="timeline">
+          <!-- MSc Information Technology -->
+          <div class="timeline-item">
+            <div class="timeline-icon" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"
+                ></path>
+              </svg>
+            </div>
+            <article class="timeline-content">
+              <h3 class="timeline-title">MSc Information Technology</h3>
+              <span class="timeline-company"
+                >National Open University of Nigeria</span
+              >
+              <time class="timeline-date" datetime="2019-07"
+                >July 2019 – June 2025</time
+              >
+              <div class="timeline-description">
+                <p>
+                  A results-oriented M.Sc. Information Technology graduate with
+                  strong analytical and technical skills. Experienced in cloud
+                  computing, systems administration, and IT project
+                  implementation. Passionate about using modern technologies to
+                  solve real-world problems and drive digital transformation.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <!-- PGDE -->
+          <div class="timeline-item">
+            <div class="timeline-icon" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"
+                ></path>
+              </svg>
+            </div>
+            <article class="timeline-content">
+              <h3 class="timeline-title">
+                Post Graduate Diploma in Education (PGDE)
+              </h3>
+              <span class="timeline-company"
+                >National Open University of Nigeria</span
+              >
+              <time class="timeline-date" datetime="2021-10"
+                >October 2021 – January 2023</time
+              >
+              <div class="timeline-description">
+                <p>
+                  A certified education professional with a Postgraduate Diploma
+                  in Education, equipped with a solid foundation in
+                  instructional strategies, curriculum development, and
+                  classroom management. Passionate about learner-centered
+                  teaching and integrating technology to enhance educational
+                  delivery.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <!-- BSc Computer Science -->
+          <div class="timeline-item">
+            <div class="timeline-icon" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"
+                ></path>
+              </svg>
+            </div>
+            <article class="timeline-content">
+              <h3 class="timeline-title">BSc Computer Science</h3>
+              <span class="timeline-company">University of Benin</span>
+              <time class="timeline-date" datetime="2009-11"
+                >November 2009 – March 2015</time
+              >
+              <div class="timeline-description">
+                <p>
+                  A versatile Computer Science graduate with a strong foundation
+                  in programming, data structures, and software development.
+                  Skilled in problem-solving and logical thinking, with hands-on
+                  experience in web development, databases, and basic
+                  networking. Committed to continuous learning and applying
+                  technical knowledge to real-world challenges.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
       <!-- Skills Section -->
-      <section
-        id="section-resume-skills"
-        class="relative hbb-section blox-resume-skills"
-        style="padding: 5rem 0 5rem 0"
-      >
-        <div class="home-section-bg"></div>
-        <div
-          class="flex flex-col items-center max-w-prose mx-auto gap-3 justify-center"
-        >
-          <div class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
-            Skills &amp; Hobbies
-          </div>
-        </div>
+      <section aria-labelledby="skills-title">
+        <h2 id="skills-title" class="section-title">Skills & Hobbies</h2>
 
-        <div
-          class="flex flex-col lg:flex-row items-center max-w-prose mx-auto gap-3 px-6 md:px-0"
-        >
-          <!-- Technical Skills -->
-          <div class="w-full lg:w-1/2">
-            <div class="mb-5 text-xl font-bold text-gray-900 dark:text-white">
-              Technical Skills
+        <div class="skills-container">
+          <div class="skills-card">
+            <h3>Technical Skills</h3>
+
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257a3 3 0 0 0-3.758-3.848a5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15"
+                />
+              </svg>
+              <span>DevOps & Cloud Engineering</span>
             </div>
 
-            <div class="skills-content">
-              <span class="skills-icon inline-block">
-                <svg
-                  style="height: 1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257a3 3 0 0 0-3.758-3.848a5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15"
-                  />
-                </svg>
-              </span>
-              <span class="skills-name text-gray-700 dark:text-gray-300"
-                >DevOps &amp; Cloud Engineering</span
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
               >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
+                />
+              </svg>
+              <span>Scripting & Programming</span>
             </div>
 
-            <div class="skills-content">
-              <span class="skills-icon inline-block">
-                <svg
-                  style="height: 1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
-                  />
-                </svg>
-              </span>
-              <span class="skills-name text-gray-700 dark:text-gray-300"
-                >Scripting &amp; Programming</span
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
               >
-            </div>
-
-            <div class="skills-content">
-              <span class="skills-icon inline-block">
-                <svg
-                  style="height: 1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="m6.75 7.5l3 2.25l-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25"
-                  />
-                </svg>
-              </span>
-              <span class="skills-name text-gray-700 dark:text-gray-300"
-                >Monitoring &amp; Soft Skills</span
-              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="m6.75 7.5l3 2.25l-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25"
+                />
+              </svg>
+              <span>Monitoring & Soft Skills</span>
             </div>
           </div>
 
-          <!-- Hobbies -->
-          <div class="w-full lg:w-1/2">
-            <div class="mb-5 text-xl font-bold text-gray-900 dark:text-white">
-              Hobbies
+          <div class="skills-card">
+            <h3>Hobbies</h3>
+
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M14.25 6.087c0-.355.186-.676.401-.959c.221-.29.349-.634.349-1.003c0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003c.215.283.401.604.401.959v0a.64.64 0 0 1-.657.643a48.39 48.39 0 0 1-4.163-.3a48.44 48.44 0 0 1 .315 4.907a.656.656 0 0 1-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 0 0-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349c.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 0 1-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 0 0 .657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 0 1-.349-1.003c0-1.035 1.008-1.875 2.25-1.875c1.243 0 2.25.84 2.25 1.875c0 .369-.128.713-.349 1.003c-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 0 0 5.427-.63a48.05 48.05 0 0 0 .582-4.717a.532.532 0 0 0-.533-.57v0c-.355 0-.676.186-.959.401c-.29.221-.634.349-1.003.349c-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349c.283.215.604.401.96.401v0a.656.656 0 0 0 .658-.663a48.422 48.422 0 0 0-.37-5.36a48.14 48.14 0 0 1-5.766.689a.578.578 0 0 1-.61-.58"
+                />
+              </svg>
+              <span>Problem-Solving</span>
             </div>
 
-            <div class="skills-content">
-              <span class="skills-icon inline-block">
-                <svg
-                  style="height: 1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M14.25 6.087c0-.355.186-.676.401-.959c.221-.29.349-.634.349-1.003c0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003c.215.283.401.604.401.959v0a.64.64 0 0 1-.657.643a48.39 48.39 0 0 1-4.163-.3a48.44 48.44 0 0 1 .315 4.907a.656.656 0 0 1-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 0 0-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349c.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 0 1-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 0 0 .657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 0 1-.349-1.003c0-1.035 1.008-1.875 2.25-1.875c1.243 0 2.25.84 2.25 1.875c0 .369-.128.713-.349 1.003c-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 0 0 5.427-.63a48.05 48.05 0 0 0 .582-4.717a.532.532 0 0 0-.533-.57v0c-.355 0-.676.186-.959.401c-.29.221-.634.349-1.003.349c-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349c.283.215.604.401.96.401v0a.656.656 0 0 0 .658-.663a48.422 48.422 0 0 0-.37-5.36a48.14 48.14 0 0 1-5.766.689a.578.578 0 0 1-.61-.58"
-                  />
-                </svg>
-              </span>
-              <span class="skills-name text-gray-700 dark:text-gray-300"
-                >Problem-Solving</span
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
               >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75A9.75 9.75 0 0 1 8.25 6c0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25A9.75 9.75 0 0 0 12.75 21a9.753 9.753 0 0 0 9.002-5.998"
+                />
+              </svg>
+              <span>Nature Walks</span>
             </div>
 
-            <div class="skills-content">
-              <span class="skills-icon inline-block">
-                <svg
-                  style="height: 1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75A9.75 9.75 0 0 1 8.25 6c0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25A9.75 9.75 0 0 0 12.75 21a9.753 9.753 0 0 0 9.002-5.998"
-                  />
-                </svg>
-              </span>
-              <span class="skills-name text-gray-700 dark:text-gray-300"
-                >Nature Walks</span
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
               >
-            </div>
-
-            <div class="skills-content">
-              <span class="skills-icon inline-block">
-                <svg
-                  style="height: 1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
-                  />
-                </svg>
-              </span>
-              <span class="skills-name text-gray-700 dark:text-gray-300"
-                >Learning in Public</span
-              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
+                />
+              </svg>
+              <span>Learning in Public</span>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- Awards Section (Empty) -->
-      <section
-        id="section-resume-awards"
-        class="relative hbb-section blox-resume-awards"
-        style="padding: 5rem 0 5rem 0"
-      >
-        <div class="home-section-bg"></div>
-        <div
-          class="flex flex-col items-center max-w-prose mx-auto gap-3 justify-center"
-        >
-          <div class="w-full flex flex-col gap-6"></div>
-        </div>
-      </section>
-
-      <!-- Languages Section -->
-      <section
-        id="section-resume-languages"
-        class="relative hbb-section blox-resume-languages"
-        style="padding: 5rem 0 5rem 0"
-      >
-        <div class="home-section-bg"></div>
-        <div
-          class="flex flex-col items-center max-w-prose mx-auto gap-3 justify-center"
-        >
-          <div class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
-            Languages
-          </div>
-          <div class="flex items-center flex-col lg:flex-row gap-x-8">
-            <div class="flex flex-col items-center">
-              <div class="flex items-center justify-center w-28 h-28">
-                <svg class="transform -rotate-90" viewBox="0 0 288 288">
-                  <circle
-                    cx="145"
-                    cy="145"
-                    r="120"
-                    stroke="currentColor"
-                    stroke-width="30"
-                    fill="transparent"
-                    class="text-gray-200 dark:text-gray-700"
-                  />
-                  <circle
-                    cx="145"
-                    cy="145"
-                    r="120"
-                    stroke="currentColor"
-                    stroke-width="30"
-                    fill="transparent"
-                    class="text-primary-600 dark:text-primary-300"
-                    style="
-                      stroke-dasharray: calc(2 * 22 / 7 * 120);
-                      stroke-dashoffset: calc(
-                        ((2 * 22 / 7 * 120) * 100 / 100) - (2 * 22 / 7 * 120)
-                      );
-                    "
-                  />
-                </svg>
-                <span class="absolute text-3xl">100%</span>
-              </div>
-              <span class="text-1xl">English</span>
-            </div>
-
-            <div class="flex flex-col items-center">
-              <div class="flex items-center justify-center w-28 h-28">
-                <svg class="transform -rotate-90" viewBox="0 0 288 288">
-                  <circle
-                    cx="145"
-                    cy="145"
-                    r="120"
-                    stroke="currentColor"
-                    stroke-width="30"
-                    fill="transparent"
-                    class="text-gray-200 dark:text-gray-700"
-                  />
-                  <circle
-                    cx="145"
-                    cy="145"
-                    r="120"
-                    stroke="currentColor"
-                    stroke-width="30"
-                    fill="transparent"
-                    class="text-primary-600 dark:text-primary-300"
-                    style="
-                      stroke-dasharray: calc(2 * 22 / 7 * 120);
-                      stroke-dashoffset: calc(
-                        ((2 * 22 / 7 * 120) * 100 / 100) - (2 * 22 / 7 * 120)
-                      );
-                    "
-                  />
-                </svg>
-                <span class="absolute text-3xl">100%</span>
-              </div>
-              <span class="text-1xl">Igbo</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <div class="page-footer">
-      <footer
-        class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200"
-      >
-        <p class="powered-by text-center">
-          © 2025 Me. This work is licensed under
-          <a
-            href="https://creativecommons.org/licenses/by-nc-nd/4.0"
-            rel="noopener noreferrer"
-            target="_blank"
-            >CC BY NC ND 4.0</a
-          >
-        </p>
+    <footer class="page-footer">
+      <div class="footer-content">
+        <div class="footer-copyright">
+          <span>© 2025 Idoko Ernest Chukwudi</span>
+        </div>
 
-        <p class="powered-by footer-license-icons">
+        <div class="footer-powered-by">
+          <p>
+            Published with
+            <a
+              href="https://hugoblox.com/?utm_campaign=poweredby"
+              target="_blank"
+              rel="noopener"
+              >Hugo Blox Builder</a
+            >
+          </p>
+        </div>
+
+        <div class="social-links">
           <a
-            href="https://creativecommons.org/licenses/by-nc-nd/4.0"
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label="Creative Commons"
+            href="mailto:idokochukwudie@gmail.com"
+            class="social-link"
+            aria-label="Email"
+            title="Email"
           >
-            <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
-            <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
-            <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
-            <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
+            </svg>
           </a>
-        </p>
 
-        <p class="powered-by text-center">
-          Published with
           <a
-            href="https://hugoblox.com/?utm_campaign=poweredby"
+            href="https://tinyurl.com/5c4b6hxx"
+            class="social-link"
+            aria-label="Instagram"
+            title="Instagram"
             target="_blank"
             rel="noopener"
-            >Hugo Blox Builder</a
           >
-          — the free,
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+
           <a
-            href="https://github.com/HugoBlox/hugo-blox-builder"
+            href="https://github.com/idokochukwudi"
+            class="social-link"
+            aria-label="GitHub"
+            title="GitHub"
             target="_blank"
             rel="noopener"
-            >open source</a
           >
-          website builder that empowers creators.
-        </p>
-      </footer>
-    </div>
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/chukwudi-idoko-b5608471/"
+            class="social-link"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://tinyurl.com/uezecss9"
+            class="social-link"
+            aria-label="X/Twitter"
+            title="X/Twitter"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Portfolio Website | All rights reserved</p>
+      </div>
+    </footer>
   </body>
 </html>
