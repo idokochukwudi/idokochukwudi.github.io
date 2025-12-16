@@ -15,7 +15,7 @@
     <meta name="author" content="Idoko Ernest Chukwudi" />
     <meta
       name="description"
-      content="Senior DevOps Engineer & Program Analyst with 7+ years expertise in cloud infrastructure, automation, and CI/CD pipelines at Federal Capital Territory Administration."
+      content="Senior DevOps Engineer & ICT Head with 7+ years expertise in IT infrastructure, cloud solutions, and educational technology at FCT College of Nursing Sciences."
     />
     <link rel="alternate" hreflang="en-us" href="http://localhost:1313/" />
     <link rel="stylesheet" href="/css/themes/emerald.min.css" />
@@ -913,7 +913,7 @@
       /* Theme Toggle */
       .theme-toggle {
         background: rgba(255, 255, 255, 0.1);
-        border: none;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         cursor: pointer;
         padding: var(--spacing-sm);
         border-radius: var(--radius-full);
@@ -923,18 +923,28 @@
         align-items: center;
         justify-content: center;
         transition: all var(--transition-normal);
-        color: white;
+        color: var(--text-light);
+      }
+
+      .dark .theme-toggle {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-dark);
       }
 
       .theme-toggle:hover {
-        transform: rotate(15deg) scale(1.1);
+        background: rgba(49, 151, 149, 0.2);
+        transform: scale(1.1);
+      }
+
+      .dark .theme-toggle:hover {
         background: rgba(212, 175, 55, 0.2);
       }
 
       /* Search Toggle */
       .search-toggle {
         background: rgba(255, 255, 255, 0.1);
-        border: none;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         cursor: pointer;
         padding: var(--spacing-sm);
         border-radius: var(--radius-full);
@@ -944,12 +954,22 @@
         align-items: center;
         justify-content: center;
         transition: all var(--transition-normal);
-        color: white;
+        color: var(--text-light);
+      }
+
+      .dark .search-toggle {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-dark);
       }
 
       .search-toggle:hover {
-        transform: rotate(15deg) scale(1.1);
         background: rgba(49, 151, 149, 0.2);
+        transform: scale(1.1);
+      }
+
+      .dark .search-toggle:hover {
+        background: rgba(212, 175, 55, 0.2);
       }
 
       /* Header Actions */
@@ -957,6 +977,34 @@
         display: flex;
         align-items: center;
         gap: var(--spacing-md);
+      }
+
+      /* Fix for dark mode buttons */
+      .dark .cv-button,
+      .dark .contact-button {
+        border: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .dark .cv-button:hover,
+      .dark .contact-button:hover {
+        border-color: var(--accent-gold);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+      }
+
+      /* Logo image styling */
+      .navbar-brand img {
+        height: 40px;
+        width: auto;
+        transition: transform var(--transition-normal);
+      }
+
+      .navbar-brand img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Ensure contact link works */
+      .nav-link[href*="contact"] {
+        position: relative;
       }
 
       /* Responsive Design */
@@ -1041,6 +1089,10 @@
         .expertise-grid {
           grid-template-columns: 1fr;
         }
+
+        .navbar-brand img {
+          height: 35px;
+        }
       }
 
       @media (max-width: 480px) {
@@ -1068,6 +1120,10 @@
 
         .ctas-grid {
           grid-template-columns: 1fr;
+        }
+
+        .navbar-brand img {
+          height: 30px;
         }
       }
 
@@ -1129,6 +1185,7 @@
       }
     </style>
 
+    <!-- FIXED NAVIGATION SCRIPT -->
     <script>
       window.hbb = {
         defaultTheme: document.documentElement.dataset.wcThemeDefault,
@@ -1175,8 +1232,8 @@
             // Toggle hamburger icon
             const showIcon = mobileMenuToggle.querySelector("#show-button");
             const hideIcon = mobileMenuToggle.querySelector("#hide-button");
-            showIcon.classList.toggle("hidden");
-            hideIcon.classList.toggle("hidden");
+            if (showIcon) showIcon.classList.toggle("hidden");
+            if (hideIcon) hideIcon.classList.toggle("hidden");
           });
         }
 
@@ -1186,12 +1243,12 @@
             navMenu.classList.remove("active");
             const showIcon = mobileMenuToggle.querySelector("#show-button");
             const hideIcon = mobileMenuToggle.querySelector("#hide-button");
-            showIcon.classList.remove("hidden");
-            hideIcon.classList.add("hidden");
+            if (showIcon) showIcon.classList.remove("hidden");
+            if (hideIcon) hideIcon.classList.add("hidden");
           });
         });
 
-        // Theme toggle functionality
+        // Theme toggle functionality - FIXED
         if (themeToggle) {
           themeToggle.addEventListener("click", () => {
             const isDark = document.documentElement.classList.contains("dark");
@@ -1201,6 +1258,23 @@
             } else {
               window.hbb.setDarkTheme();
               localStorage.setItem("wc-color-theme", "dark");
+            }
+          });
+        }
+
+        // Search toggle functionality
+        const searchToggle = document.getElementById("search_toggle");
+        const searchElement = document.getElementById("search");
+
+        if (searchToggle && searchElement) {
+          searchToggle.addEventListener("click", () => {
+            searchElement.classList.toggle("hidden");
+            if (!searchElement.classList.contains("hidden")) {
+              const searchInput = searchElement.querySelector("input");
+              if (searchInput) {
+                searchInput.value = "";
+                searchInput.focus();
+              }
             }
           });
         }
@@ -1266,11 +1340,11 @@
     <meta property="og:url" content="http://localhost:1313/" />
     <meta
       property="og:title"
-      content="Idoko Ernest Chukwudi | Senior DevOps Engineer & Program Analyst"
+      content="Idoko Ernest Chukwudi | Head of ICT & Senior DevOps Engineer"
     />
     <meta
       property="og:description"
-      content="Senior DevOps Engineer & Program Analyst with 7+ years expertise in cloud infrastructure, automation, and CI/CD pipelines at Federal Capital Territory Administration."
+      content="Head of ICT Operations & Senior DevOps Engineer with 7+ years expertise in IT infrastructure, cloud solutions, and educational technology at FCT College of Nursing Sciences."
     />
     <meta
       property="og:image"
@@ -1288,10 +1362,10 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Idoko Ernest Chukwudi",
-        "jobTitle": "Senior DevOps Engineer & Program Analyst",
+        "jobTitle": "Head of ICT Operations & Senior DevOps Engineer",
         "worksFor": {
-          "@type": "GovernmentOrganization",
-          "name": "Federal Capital Territory Administration (FCTA)"
+          "@type": "EducationalOrganization",
+          "name": "FCT College of Nursing Sciences, Gwagwalada"
         },
         "experienceYears": "7+",
         "url": "http://localhost:1313/",
@@ -1304,9 +1378,7 @@
       }
     </script>
 
-    <title>
-      Idoko Ernest Chukwudi | Senior DevOps Engineer & Program Analyst
-    </title>
+    <title>Idoko Ernest Chukwudi | Head of ICT & Senior DevOps Engineer</title>
 
     <!-- Pagefind search CSS -->
     <link
@@ -1387,15 +1459,29 @@
   </head>
 
   <body>
-    <!-- Header -->
+    <!-- FIXED HEADER SECTION -->
     <header class="page-header">
       <nav class="navbar">
+        <!-- Logo with fallback to text -->
         <a
           class="navbar-brand"
           href="/"
-          title="Idoko Ernest Chukwudi | Senior DevOps Engineer"
+          title="Idoko Ernest Chukwudi | Head of ICT & Senior DevOps Engineer"
+          style="display: flex; align-items: center; gap: 12px"
         >
-          Idoko Ernest Chukwudi
+          <!-- Replace /media/logo.png with your logo path -->
+          <img
+            src="/media/logo.png"
+            alt="Logo"
+            style="height: 40px; width: auto"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+          />
+          <span
+            style="display: none; font-weight: 700; color: var(--primary-navy)"
+            class="dark:text-white"
+          >
+            Senior DevOps Engineer
+          </span>
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -1445,11 +1531,12 @@
             aria-label="Search"
             id="search_toggle"
             title="Search"
+            style="display: flex; align-items: center; justify-content: center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              height="16"
-              width="16"
+              height="20"
+              width="20"
               viewBox="0 0 512 512"
               fill="currentColor"
             >
@@ -1464,12 +1551,13 @@
             accesskey="t"
             title="Toggle theme"
             aria-label="Toggle dark/light mode"
+            style="display: flex; align-items: center; justify-content: center"
           >
             <svg
               id="moon"
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -1483,15 +1571,15 @@
             <svg
               id="sun"
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="dark:block [&:not(dark)]:hidden"
+              class="hidden dark:block"
             >
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -1518,17 +1606,17 @@
             <img
               class="profile-avatar"
               src="/author/idoko-ernest-chukwudi/avatar_hu_e99125cab548efd1.jpg"
-              alt="Idoko Ernest Chukwudi - Senior DevOps Engineer"
+              alt="Idoko Ernest Chukwudi - Head of ICT & Senior DevOps Engineer"
               width="240"
               height="240"
             />
-            <div class="profile-badge">DEV</div>
+            <div class="profile-badge">ICT</div>
           </div>
 
           <div class="profile-info">
             <h1 class="profile-title">Idoko Ernest Chukwudi</h1>
             <h2 class="profile-subtitle">
-              Senior DevOps Engineer & Program Analyst
+              Head of ICT Operations & Senior DevOps Engineer
             </h2>
 
             <div class="profile-organization">
@@ -1546,20 +1634,23 @@
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              <span
-                >Federal Capital Territory Administration (FCTA), Abuja</span
-              >
+              <span>FCT College of Nursing Sciences, Gwagwalada</span>
               <span class="experience-badge">7+ Years</span>
             </div>
 
             <div class="profile-description">
               <p>
-                Senior DevOps Engineer & Program Analyst with over 7 years of
-                experience at the Federal Capital Territory Administration,
-                specializing in cloud infrastructure modernization, CI/CD
-                pipeline implementation, and large-scale automation projects.
-                Expert in bridging development and operations to deliver
-                scalable, secure, and efficient solutions.
+                Head of ICT Operations and Senior DevOps Engineer with over 7
+                years of experience at the FCT College of Nursing Sciences,
+                specializing in IT infrastructure management, cloud solutions,
+                educational technology, and DevOps practices. Expert in bridging
+                technology and education to deliver scalable, secure, and
+                efficient solutions for academic institutions.
+              </p>
+              <p>
+                Passionate about leveraging technology to enhance educational
+                outcomes and government service delivery through innovative IT
+                solutions.
               </p>
             </div>
 
@@ -1691,25 +1782,26 @@
 
         <div class="about-text">
           <p>
-            Senior DevOps Engineer & Program Analyst with over 7 years of
-            progressive experience at the Federal Capital Territory
-            Administration (FCTA), Abuja. Specialized in designing,
-            implementing, and managing scalable cloud infrastructure, CI/CD
-            pipelines, and automation frameworks that enhance operational
-            efficiency and system reliability.
+            Head of ICT Operations and Senior DevOps Engineer with over 7 years
+            of progressive experience at the FCT College of Nursing Sciences,
+            Gwagwalada. Specialized in designing, implementing, and managing
+            comprehensive IT infrastructure, cloud solutions, and educational
+            technology systems that enhance operational efficiency and academic
+            delivery.
           </p>
           <p>
             Proven expertise in modern DevOps practices including Infrastructure
-            as Code (IaC), container orchestration, cloud security, and
-            monitoring solutions. Successfully led digital transformation
-            initiatives, reducing deployment times by 70% while improving system
-            uptime to 99.9%.
+            as Code (IaC), cloud security, system administration, and
+            educational technology integration. Successfully led digital
+            transformation initiatives for educational platforms, improving
+            system reliability and user experience for students and staff.
           </p>
           <p>
             Holds multiple advanced degrees including MSc in Information
-            Technology and extensive certifications in cloud platforms and
-            DevOps methodologies. Passionate about mentoring teams and driving
-            technical excellence through innovative solutions.
+            Technology and extensive certifications in IT management and cloud
+            platforms. Passionate about mentoring teams and driving technical
+            excellence through innovative solutions that support educational
+            objectives.
           </p>
         </div>
 
@@ -1724,7 +1816,7 @@
             >
               <path d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <span class="expertise-text">Cloud Architecture</span>
+            <span class="expertise-text">IT Infrastructure</span>
           </div>
           <div class="expertise-item">
             <svg
@@ -1749,10 +1841,10 @@
               stroke-width="2"
             >
               <path
-                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
               />
             </svg>
-            <span class="expertise-text">Infrastructure as Code</span>
+            <span class="expertise-text">Cloud Solutions</span>
           </div>
           <div class="expertise-item">
             <svg
@@ -1767,27 +1859,40 @@
               />
               <circle cx="12" cy="12" r="3" />
             </svg>
-            <span class="expertise-text">CI/CD Automation</span>
+            <span class="expertise-text">Full Stack Development</span>
           </div>
         </div>
 
         <div class="experience-highlights">
-          <h3 class="experience-title">Key Achievements at FCTA</h3>
+          <h3 class="experience-title">
+            Key Responsibilities at FCT College of Nursing Sciences
+          </h3>
           <ul class="experience-list">
             <li>
-              Led cloud migration project for 50+ government applications to AWS
+              Head ICT operations, overseeing IT infrastructure including
+              networks, hardware, software, backups, and technical support
+              services
             </li>
             <li>
-              Implemented Kubernetes-based container orchestration for
-              microservices
+              Manage digital learning platforms and coordinate CBT
+              (Computer-Based Testing) systems for students and staff
             </li>
             <li>
-              Reduced infrastructure costs by 40% through optimized resource
-              allocation
+              Provide direct user support, resolve technical issues, manage
+              application portals, and oversee tech-related procurement
             </li>
-            <li>Established DevOps culture across 10+ development teams</li>
             <li>
-              Designed and deployed comprehensive monitoring and alerting system
+              Serve as Course Coordinator and Lecturer for "Use of Computer" –
+              teach first-year students digital literacy, Microsoft Office, and
+              internet usage
+            </li>
+            <li>
+              Liaise with the FCTA central ICT unit on system upgrades, security
+              updates, and technology implementation across departments
+            </li>
+            <li>
+              Apply DevOps and cloud engineering skills to enhance government IT
+              systems and infrastructure
             </li>
           </ul>
         </div>
@@ -1835,34 +1940,38 @@
 
       <!-- AI Mission Section - Right Side -->
       <section class="ai-mission-section">
-        <h2>Harnessing AI to Shape a Smarter Future</h2>
+        <h2>Technology Innovation & Educational Enhancement</h2>
 
         <div class="mission-text">
           <p>
-            My mission is to leverage cutting-edge Artificial Intelligence
-            technologies to build innovative, scalable solutions that address
-            complex challenges in government and enterprise environments. By
-            integrating AI with robust DevOps practices (MLOps), I create
-            intelligent systems that enhance decision-making, optimize
-            operations, and drive digital transformation.
+            My mission is to leverage cutting-edge technology and innovative
+            solutions to enhance educational delivery and government service
+            efficiency. By integrating DevOps practices, cloud solutions, and
+            intelligent systems, I create robust platforms that support
+            learning, administration, and community service.
           </p>
           <p>
-            At FCTA, I've pioneered the integration of AI-powered automation
-            tools that have significantly improved service delivery and
-            operational efficiency. My focus is on developing responsible AI
-            solutions that are secure, transparent, and aligned with
-            organizational objectives.
+            At FCT College of Nursing Sciences, I've pioneered the integration
+            of educational technology tools that have significantly improved
+            learning outcomes and operational efficiency. My focus is on
+            developing responsible technology solutions that are secure,
+            accessible, and aligned with educational objectives.
           </p>
           <p>
-            Through continuous learning and strategic application of AI
-            technologies, I aim to contribute to a future where intelligent
-            systems work in harmony with human expertise to solve real-world
-            problems and create sustainable value for organizations and
-            communities.
+            Through continuous learning and strategic application of technology,
+            I aim to contribute to a future where educational institutions
+            leverage technology to provide exceptional learning experiences and
+            where government services are enhanced through innovative IT
+            solutions.
+          </p>
+          <p>
+            I bring expertise in cloud infrastructure, full stack web
+            development, and IT management to help government and educational
+            institutions modernize their systems and improve service delivery.
           </p>
           <p>
             🤝 Open to strategic collaborations and innovative projects that
-            push the boundaries of technology. Let's connect! ✨
+            push the boundaries of educational technology. Let's connect! ✨
           </p>
         </div>
 
@@ -1879,7 +1988,7 @@
                 d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
               />
             </svg>
-            <span class="expertise-text">MLOps Implementation</span>
+            <span class="expertise-text">Educational Technology</span>
           </div>
           <div class="expertise-item">
             <svg
@@ -1893,7 +2002,7 @@
                 d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
               />
             </svg>
-            <span class="expertise-text">Data Pipeline Automation</span>
+            <span class="expertise-text">System Administration</span>
           </div>
           <div class="expertise-item">
             <svg
@@ -1907,7 +2016,7 @@
                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
               />
             </svg>
-            <span class="expertise-text">AI Security & Ethics</span>
+            <span class="expertise-text">Cloud Infrastructure</span>
           </div>
           <div class="expertise-item">
             <svg
@@ -1919,21 +2028,37 @@
             >
               <path d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <span class="expertise-text">Cloud AI Integration</span>
+            <span class="expertise-text">DevOps Practices</span>
           </div>
         </div>
 
         <div class="experience-highlights">
-          <h3 class="experience-title">AI Initiatives at FCTA</h3>
+          <h3 class="experience-title">Technology & Innovation Initiatives</h3>
           <ul class="experience-list">
             <li>
-              Implemented AI-powered monitoring for infrastructure anomaly
-              detection
+              Implement smart monitoring systems for infrastructure and network
+              performance
             </li>
-            <li>Developed ML models for predictive resource allocation</li>
-            <li>Led AI ethics and governance framework development</li>
-            <li>Integrated AI assistants for IT support automation</li>
-            <li>Pioneered MLOps practices for reproducible AI workflows</li>
+            <li>
+              Develop automated solutions for resource allocation and IT service
+              management
+            </li>
+            <li>
+              Integrate intelligent systems for educational technology
+              enhancement
+            </li>
+            <li>
+              Implement AI-assisted tools for technical support and user
+              assistance
+            </li>
+            <li>
+              Apply MLOps practices to create reproducible and scalable
+              educational technology workflows
+            </li>
+            <li>
+              Full Stack Web Development for internal portals and educational
+              platforms
+            </li>
           </ul>
         </div>
 
@@ -1984,7 +2109,10 @@
       <div class="footer-content">
         <div class="footer-container">
           <div class="footer-copyright">
-            <span>© 2025 Idoko Ernest Chukwudi | Senior DevOps Engineer</span>
+            <span
+              >© 2025 Idoko Ernest Chukwudi | Head of ICT & Senior DevOps
+              Engineer</span
+            >
           </div>
 
           <div class="footer-powered-by">

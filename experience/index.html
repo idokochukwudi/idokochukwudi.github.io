@@ -1,6 +1,13 @@
 <!DOCTYPE html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: July 26, 2025 -->
 <html lang="en-us" dir="ltr" data-wc-theme-default="system">
   <head>
+    <script
+      src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload"
+      data-no-instant
+      defer
+    ></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,10 +15,11 @@
     <meta name="author" content="Idoko Ernest Chukwudi" />
     <meta
       name="description"
-      content="Senior DevOps Engineer & Program Analyst with 7+ years of professional experience at Federal Capital Territory Administration. Expert in cloud infrastructure, automation, and CI/CD pipelines."
+      content="Senior DevOps Engineer & ICT Head with 7+ years of professional experience at FCT College of Nursing Sciences. Expert in IT infrastructure, cloud solutions, and educational technology."
     />
     <title>
-      Professional Experience | Idoko Ernest Chukwudi | Senior DevOps Engineer
+      Professional Experience | Idoko Ernest Chukwudi | Head of ICT & Senior
+      DevOps Engineer
     </title>
 
     <!-- Favicon -->
@@ -32,16 +40,16 @@
     <!-- Open Graph / Social Media Meta Tags -->
     <meta
       property="og:site_name"
-      content="Idoko Ernest Chukwudi | Senior DevOps Engineer"
+      content="Idoko Ernest Chukwudi | Head of ICT & Senior DevOps Engineer"
     />
     <meta property="og:url" content="http://localhost:1313/experience/" />
     <meta
       property="og:title"
-      content="Professional Experience | Idoko Ernest Chukwudi | Senior DevOps Engineer"
+      content="Professional Experience | Idoko Ernest Chukwudi | Head of ICT & Senior DevOps Engineer"
     />
     <meta
       property="og:description"
-      content="Senior DevOps Engineer & Program Analyst with 7+ years of professional experience at Federal Capital Territory Administration. Expert in cloud infrastructure, automation, and CI/CD pipelines."
+      content="Head of ICT Operations and Senior DevOps Engineer with 7+ years of professional experience at FCT College of Nursing Sciences. Expert in IT infrastructure, cloud solutions, and educational technology."
     />
     <meta
       property="og:image"
@@ -53,10 +61,6 @@
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:site" content="@GetResearchDev" />
     <meta property="twitter:creator" content="@GetResearchDev" />
-
-    <!-- Font Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="/css/themes/emerald.min.css" />
@@ -70,6 +74,7 @@
 
     <!-- Font and Base Styles -->
     <style>
+      /* Import CSS variables from main page */
       :root {
         /* Professional Color Palette - Consistent with main page */
         --primary-navy: #0f172a;
@@ -99,18 +104,6 @@
         /* Border Colors */
         --border-light: #e2e8f0;
         --border-dark: #2d3748;
-
-        /* Gradient Colors */
-        --gradient-subtle: linear-gradient(
-          135deg,
-          var(--primary-navy) 0%,
-          var(--primary-blue) 100%
-        );
-        --gradient-accent: linear-gradient(
-          135deg,
-          var(--accent-teal) 0%,
-          var(--accent-gold) 100%
-        );
 
         /* Typography Scale */
         --font-size-xs: 0.75rem;
@@ -188,7 +181,7 @@
         background-color: var(--bg-dark);
       }
 
-      /* Header Styles - Consistent with main page */
+      /* Consistent Header Styles with Home Page */
       .page-header {
         position: sticky;
         top: 0;
@@ -274,26 +267,120 @@
         border-radius: var(--radius-full);
       }
 
-      /* Main Content Container */
-      .page-body {
-        max-width: var(--content-width);
-        margin: 0 auto;
-        padding: var(--spacing-3xl) var(--spacing-xl);
-        display: grid;
-        gap: var(--spacing-3xl);
+      /* Mobile Menu Toggle - Fixed */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        color: var(--text-light);
+        transition: transform var(--transition-fast);
       }
 
-      /* Page Hero Section - Consistent with main page */
+      .dark .mobile-menu-toggle {
+        color: var(--text-dark);
+      }
+
+      .mobile-menu-toggle svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      .mobile-menu-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      /* Header Actions - Consistent with Home Page */
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+      }
+
+      /* Theme Toggle - Consistent with Home Page */
+      .theme-toggle {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-full);
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all var(--transition-normal);
+        color: var(--text-light);
+      }
+
+      .dark .theme-toggle {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-dark);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+        background: rgba(49, 151, 149, 0.2);
+      }
+
+      .dark .theme-toggle:hover {
+        background: rgba(212, 175, 55, 0.2);
+      }
+
+      /* Search Toggle - Consistent with Home Page */
+      .search-toggle {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-full);
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all var(--transition-normal);
+        color: var(--text-light);
+      }
+
+      .dark .search-toggle {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-dark);
+      }
+
+      .search-toggle:hover {
+        transform: scale(1.1);
+        background: rgba(49, 151, 149, 0.2);
+      }
+
+      .dark .search-toggle:hover {
+        background: rgba(212, 175, 55, 0.2);
+      }
+
+      /* Search Container */
+      #search {
+        transition: all var(--transition-normal);
+      }
+
+      #search.hidden {
+        display: none;
+      }
+
+      /* Page Hero Section */
       .page-hero {
+        padding: var(--spacing-4xl) 0;
         background: linear-gradient(
-          rgba(15, 23, 42, 0.95),
-          rgba(15, 23, 42, 0.98)
-        );
+            rgba(15, 23, 42, 0.95),
+            rgba(15, 23, 42, 0.98)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="rgb(15,23,42)"/><rect width="100" height="100" fill="url(%23grid)"/></svg>');
         color: white;
-        padding: var(--spacing-3xl) 0;
-        margin-bottom: var(--spacing-3xl);
         position: relative;
         overflow: hidden;
+        margin-bottom: var(--spacing-3xl);
       }
 
       .page-hero::before {
@@ -341,6 +428,15 @@
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+      }
+
+      /* Main Content Container */
+      .page-body {
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: var(--spacing-3xl) var(--spacing-xl);
+        display: grid;
+        gap: var(--spacing-3xl);
       }
 
       /* Experience Timeline */
@@ -727,35 +823,7 @@
         color: var(--text-dark);
       }
 
-      /* Theme Toggle - Consistent with main page */
-      .theme-toggle {
-        background: var(--accent-light);
-        border: none;
-        cursor: pointer;
-        padding: var(--spacing-sm);
-        border-radius: var(--radius-full);
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all var(--transition-normal);
-        color: var(--text-light);
-        background: rgba(49, 151, 149, 0.1);
-      }
-
-      .dark .theme-toggle {
-        background: rgba(49, 151, 149, 0.2);
-        color: var(--text-dark);
-      }
-
-      .theme-toggle:hover {
-        transform: rotate(15deg) scale(1.1);
-        background: rgba(49, 151, 149, 0.2);
-        box-shadow: 0 6px 20px rgba(49, 151, 149, 0.2);
-      }
-
-      /* Footer - Consistent with main page */
+      /* Footer - Consistent with Home Page */
       .page-footer {
         background: var(--primary-navy);
         color: white;
@@ -835,25 +903,45 @@
         color: white;
       }
 
-      /* Footer Bottom */
-      .footer-bottom {
-        max-width: var(--content-width);
-        margin: var(--spacing-lg) auto 0;
-        padding: var(--spacing-lg) var(--spacing-xl) 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        text-align: center;
-        color: rgba(255, 255, 255, 0.5);
-        font-size: var(--font-size-sm);
-      }
-
-      /* Responsive Design */
+      /* Responsive Design - Fixed for Mobile */
       @media (max-width: 768px) {
-        .navbar {
-          padding: var(--spacing-md);
+        .mobile-menu-toggle {
+          display: block;
         }
 
         .nav-menu {
-          display: none;
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          background: var(--card-light);
+          border-top: 1px solid var(--border-light);
+          border-bottom: 1px solid var(--border-light);
+          flex-direction: column;
+          padding: var(--spacing-lg);
+          gap: var(--spacing-md);
+          transform: translateY(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all var(--transition-normal);
+          z-index: 999;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .nav-menu {
+          background: var(--card-dark);
+          border-color: var(--border-dark);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-menu.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .navbar {
+          padding: var(--spacing-md);
         }
 
         .page-hero {
@@ -916,13 +1004,6 @@
         }
       }
 
-      @media (min-width: 1400px) {
-        :root {
-          --content-width: 1400px;
-          --section-max-width: 1000px;
-        }
-      }
-
       /* Animations */
       @keyframes fadeInUp {
         from {
@@ -968,9 +1049,37 @@
       }
     </style>
 
-    <!-- JavaScript -->
+    <!-- Pagefind search CSS and JS -->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css"
+      integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII="
+    />
     <script>
-      // Theme management - Consistent with main page
+      window.hbb.pagefind = { baseUrl: "/" };
+    </script>
+
+    <style>
+      html.dark {
+        --pagefind-ui-primary: #319795;
+        --pagefind-ui-text: #f7fafc;
+        --pagefind-ui-background: #1e293b;
+        --pagefind-ui-border: #2d3748;
+        --pagefind-ui-tag: #2c7a7b;
+      }
+
+      html:not(.dark) {
+        --pagefind-ui-primary: #319795;
+        --pagefind-ui-text: #1a202c;
+        --pagefind-ui-background: #ffffff;
+        --pagefind-ui-border: #e2e8f0;
+        --pagefind-ui-tag: #e6fffa;
+      }
+    </style>
+
+    <!-- JavaScript - Consistent with Home Page -->
+    <script>
       window.hbb = {
         defaultTheme: document.documentElement.dataset.wcThemeDefault,
         setDarkTheme: () => {
@@ -982,6 +1091,10 @@
           document.documentElement.style.colorScheme = "light";
         },
       };
+
+      console.debug(
+        `Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`
+      );
 
       if ("wc-color-theme" in localStorage) {
         localStorage.getItem("wc-color-theme") === "dark"
@@ -998,8 +1111,37 @@
         }
       }
 
+      // Mobile menu toggle functionality
       document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const navMenu = document.querySelector(".nav-menu");
         const themeToggle = document.querySelector(".theme-toggle");
+
+        // Mobile menu toggle
+        if (mobileMenuToggle) {
+          mobileMenuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+
+            // Toggle hamburger icon
+            const showIcon = mobileMenuToggle.querySelector("#show-button");
+            const hideIcon = mobileMenuToggle.querySelector("#hide-button");
+            if (showIcon) showIcon.classList.toggle("hidden");
+            if (hideIcon) hideIcon.classList.toggle("hidden");
+          });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            const showIcon = mobileMenuToggle.querySelector("#show-button");
+            const hideIcon = mobileMenuToggle.querySelector("#hide-button");
+            if (showIcon) showIcon.classList.remove("hidden");
+            if (hideIcon) hideIcon.classList.add("hidden");
+          });
+        });
+
+        // Theme toggle functionality - FIXED
         if (themeToggle) {
           themeToggle.addEventListener("click", () => {
             const isDark = document.documentElement.classList.contains("dark");
@@ -1009,6 +1151,42 @@
             } else {
               window.hbb.setDarkTheme();
               localStorage.setItem("wc-color-theme", "dark");
+            }
+          });
+        }
+
+        // Search toggle functionality
+        let element = document.getElementById("search");
+        let trigger = document.getElementById("search_toggle");
+
+        if (trigger && element) {
+          trigger.addEventListener("click", () => {
+            element.classList.toggle("hidden");
+
+            // Initialize Pagefind if not already initialized
+            if (!element.classList.contains("hidden")) {
+              if (
+                typeof PagefindUI !== "undefined" &&
+                !element.hasAttribute("data-pagefind-initialized")
+              ) {
+                new PagefindUI({
+                  element: "#search",
+                  showSubResults: true,
+                  baseUrl: window.hbb.pagefind
+                    ? window.hbb.pagefind.baseUrl
+                    : "/",
+                  bundlePath:
+                    (window.hbb.pagefind ? window.hbb.pagefind.baseUrl : "/") +
+                    "pagefind/",
+                });
+                element.setAttribute("data-pagefind-initialized", "true");
+              }
+
+              const searchInput = element.querySelector("input");
+              if (searchInput) {
+                searchInput.value = "";
+                searchInput.focus();
+              }
             }
           });
         }
@@ -1057,10 +1235,48 @@
   </head>
 
   <body>
-    <!-- Header -->
+    <!-- Header - Consistent with Home Page -->
     <header class="page-header">
-      <nav class="navbar" aria-label="Main navigation">
-        <a class="navbar-brand" href="/">Idoko Ernest Chukwudi</a>
+      <nav class="navbar">
+        <!-- Logo with fallback to text -->
+        <a
+          class="navbar-brand"
+          href="/"
+          title="Idoko Ernest Chukwudi | Head of ICT & Senior DevOps Engineer"
+          style="display: flex; align-items: center; gap: 12px"
+        >
+          <!-- Replace /media/logo.png with your logo path -->
+          <img
+            src="/media/logo.png"
+            alt="Logo"
+            style="height: 40px; width: auto"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+          />
+          <span
+            style="display: none; font-weight: 700; color: var(--primary-navy)"
+            class="dark:text-white"
+          >
+            Senior DevOps Engineer
+          </span>
+        </a>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <svg id="show-button" class="h-6 fill-current" viewBox="0 0 20 20">
+            <title>Open Menu</title>
+            <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+          </svg>
+          <svg
+            id="hide-button"
+            class="h-6 fill-current hidden"
+            viewBox="0 0 20 20"
+          >
+            <title>Close Menu</title>
+            <polygon
+              points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+              transform="rotate(45 10 10)"
+            ></polygon>
+          </svg>
+        </button>
 
         <ul class="nav-menu" role="menubar">
           <li role="none">
@@ -1083,17 +1299,39 @@
           </li>
         </ul>
 
-        <div style="display: flex; align-items: center; gap: 1rem">
+        <div class="header-actions">
+          <button
+            class="search-toggle"
+            aria-label="Search"
+            id="search_toggle"
+            title="Search"
+            style="display: flex; align-items: center; justify-content: center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="20"
+              width="20"
+              viewBox="0 0 512 512"
+              fill="currentColor"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+              />
+            </svg>
+          </button>
+
           <button
             class="theme-toggle"
+            accesskey="t"
             title="Toggle theme"
             aria-label="Toggle dark/light mode"
+            style="display: flex; align-items: center; justify-content: center"
           >
             <svg
               id="moon"
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -1107,8 +1345,8 @@
             <svg
               id="sun"
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -1130,6 +1368,9 @@
           </button>
         </div>
       </nav>
+
+      <!-- Search Container -->
+      <div id="search" class="hidden p-3"></div>
     </header>
 
     <!-- Page Hero -->
@@ -1137,8 +1378,9 @@
       <div class="hero-content">
         <h1 class="page-title">Professional Experience</h1>
         <p class="page-subtitle">
-          7+ years of expertise in DevOps engineering, cloud infrastructure, and
-          program analysis at Federal Capital Territory Administration
+          7+ years of expertise in IT infrastructure management, DevOps
+          engineering, and educational technology leadership at FCT College of
+          Nursing Sciences
         </p>
       </div>
     </section>
@@ -1152,7 +1394,7 @@
             Work Experience
           </h2>
           <p class="section-subtitle">
-            A timeline of my professional journey and key achievements
+            A timeline of my professional journey and key responsibilities
           </p>
         </div>
 
@@ -1172,9 +1414,9 @@
             </div>
             <article class="timeline-content">
               <div class="timeline-header">
-                <h3 class="timeline-title">Programme Analyst</h3>
+                <h3 class="timeline-title">Head of ICT Operations</h3>
                 <span class="timeline-company"
-                  >Federal Capital Territory Administration</span
+                  >FCT College of Nursing Sciences, Gwagwalada</span
                 >
                 <time class="timeline-date" datetime="2018-10"
                   >October 2018 – Present</time
@@ -1205,6 +1447,10 @@
                     Liaise with the FCTA central ICT unit on system upgrades,
                     security updates, and technology implementation across
                     departments
+                  </li>
+                  <li>
+                    Apply DevOps and cloud engineering skills to enhance
+                    government IT systems and infrastructure
                   </li>
                 </ul>
               </div>
@@ -1403,13 +1649,12 @@
         </div>
       </section>
 
-      <!-- Skills & Hobbies Section -->
+      <!-- Skills & Expertise Section -->
       <section class="skills-section" aria-labelledby="skills-title">
         <div class="section-header">
           <h2 id="skills-title" class="section-title">Skills & Expertise</h2>
           <p class="section-subtitle">
-            Technical competencies and personal interests that drive my
-            professional growth
+            Technical competencies and professional strengths
           </p>
         </div>
 
@@ -1449,7 +1694,7 @@
                   d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
                 ></path>
               </svg>
-              <span>Scripting & Programming (Python, Bash, Terraform)</span>
+              <span>IT Infrastructure & System Administration</span>
             </div>
 
             <div class="skill-item">
@@ -1467,14 +1712,12 @@
                   d="m6.75 7.5l3 2.25l-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25"
                 ></path>
               </svg>
-              <span
-                >Monitoring & System Administration (Prometheus, Grafana)</span
-              >
+              <span>Full Stack Web Development & Educational Technology</span>
             </div>
           </div>
 
           <div class="skills-card">
-            <h3>Personal Strengths</h3>
+            <h3>Professional Strengths</h3>
             <div class="skill-item">
               <svg
                 class="skill-icon"
@@ -1508,7 +1751,7 @@
                   d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75A9.75 9.75 0 0 1 8.25 6c0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25A9.75 9.75 0 0 0 12.75 21a9.753 9.753 0 0 0 9.002-5.998"
                 ></path>
               </svg>
-              <span>Continuous Learning & Nature Appreciation</span>
+              <span>Continuous Learning & Technology Integration</span>
             </div>
 
             <div class="skill-item">
@@ -1526,19 +1769,22 @@
                   d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
                 ></path>
               </svg>
-              <span>Public Knowledge Sharing & Mentorship</span>
+              <span>Educational Leadership & Team Mentorship</span>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer - Consistent with Home Page -->
     <footer class="page-footer">
       <div class="footer-content">
         <div class="footer-container">
           <div class="footer-copyright">
-            <span>© 2025 Idoko Ernest Chukwudi | Senior DevOps Engineer</span>
+            <span
+              >© 2025 Idoko Ernest Chukwudi | Head of ICT & Senior DevOps
+              Engineer</span
+            >
           </div>
 
           <div class="footer-powered-by">
@@ -1559,14 +1805,24 @@
               class="social-link"
               aria-label="Email"
               title="Email"
+              target="_blank"
+              rel="noopener"
             >
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
                 ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             </a>
 
@@ -1631,10 +1887,6 @@
             </a>
           </div>
         </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>Professional Portfolio | All rights reserved</p>
       </div>
     </footer>
   </body>
