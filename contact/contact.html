@@ -190,6 +190,30 @@
         color: var(--accent-teal);
       }
 
+      /* Logo image styling */
+      .navbar-brand img {
+        height: 40px;
+        width: auto;
+        transition: transform var(--transition-normal);
+      }
+
+      .navbar-brand img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Navbar brand responsive */
+      @media (max-width: 768px) {
+        .navbar-brand img {
+          height: 35px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar-brand img {
+          height: 30px;
+        }
+      }
+
       .nav-menu {
         display: flex;
         gap: var(--spacing-xl);
@@ -229,6 +253,68 @@
         height: 2px;
         background: var(--accent-gold);
         border-radius: var(--radius-full);
+      }
+
+      /* Mobile Menu Toggle */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        color: var(--text-light);
+        transition: transform var(--transition-fast);
+      }
+
+      .dark .mobile-menu-toggle {
+        color: var(--text-dark);
+      }
+
+      .mobile-menu-toggle svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      .mobile-menu-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      /* Mobile Navigation */
+      @media (max-width: 768px) {
+        .mobile-menu-toggle {
+          display: block;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          background: var(--card-light);
+          border-top: 1px solid var(--border-light);
+          border-bottom: 1px solid var(--border-light);
+          flex-direction: column;
+          padding: var(--spacing-lg);
+          gap: var(--spacing-md);
+          transform: translateY(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all var(--transition-normal);
+          z-index: 999;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .nav-menu {
+          background: var(--card-dark);
+          border-color: var(--border-dark);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-menu.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
       }
 
       /* Page Hero - Consistent with main page */
@@ -886,6 +972,10 @@
           display: none;
         }
 
+        .nav-menu.active {
+          display: flex;
+        }
+
         .page-hero {
           padding: var(--spacing-2xl) 0;
           margin-bottom: var(--spacing-2xl);
@@ -1007,6 +1097,11 @@
 
       ::-webkit-scrollbar-thumb:hover {
         background: var(--accent-gold);
+      }
+
+      /* Hidden utility class */
+      .hidden {
+        display: none !important;
       }
     </style>
 
@@ -1144,6 +1239,33 @@
             element.style.animationFillMode = "both";
             observer.observe(element);
           });
+
+        // MOBILE MENU TOGGLE
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        if (mobileMenuToggle && navMenu) {
+          console.log("Mobile menu found");
+          mobileMenuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+
+            const showIcon = mobileMenuToggle.querySelector("#show-button");
+            const hideIcon = mobileMenuToggle.querySelector("#hide-button");
+            if (showIcon) showIcon.classList.toggle("hidden");
+            if (hideIcon) hideIcon.classList.toggle("hidden");
+          });
+
+          // Close mobile menu when clicking on a link
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+              navMenu.classList.remove("active");
+              const showIcon = mobileMenuToggle.querySelector("#show-button");
+              const hideIcon = mobileMenuToggle.querySelector("#hide-button");
+              if (showIcon) showIcon.classList.remove("hidden");
+              if (hideIcon) hideIcon.classList.add("hidden");
+            });
+          });
+        }
       });
     </script>
 
@@ -1295,14 +1417,47 @@
     <!-- Header -->
     <header class="page-header">
       <nav class="navbar">
+        <!-- Logo with fallback to text -->
         <a
           class="navbar-brand"
           href="/"
-          title="Idoko Ernest Chukwudi | Senior DevOps Engineer"
+          title="Idoko Ernest Chukwudi | Head of ICT & Senior DevOps Engineer"
+          style="display: flex; align-items: center; gap: 12px"
         >
-          Idoko Ernest Chukwudi
+          <img
+            src="/media/cloudit-logo.png"
+            alt="Logo"
+            style="height: 40px; width: auto"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+          />
+          <span
+            style="display: none; font-weight: 700; color: var(--primary-navy)"
+            class="dark:text-white"
+          >
+            Senior DevOps Engineer
+          </span>
         </a>
 
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <svg id="show-button" class="h-6 fill-current" viewBox="0 0 20 20">
+            <title>Open Menu</title>
+            <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+          </svg>
+          <svg
+            id="hide-button"
+            class="h-6 fill-current hidden"
+            viewBox="0 0 20 20"
+          >
+            <title>Close Menu</title>
+            <polygon
+              points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+              transform="rotate(45 10 10)"
+            ></polygon>
+          </svg>
+        </button>
+
+        <!-- Navigation Menu -->
         <ul class="nav-menu" role="menubar">
           <li role="none">
             <a class="nav-link" href="/" role="menuitem">Bio</a>
@@ -1318,7 +1473,7 @@
           <li role="none">
             <a
               class="nav-link active"
-              href="/contact/contact.html"
+              href="/contact/"
               role="menuitem"
               aria-current="page"
               >Contact</a
@@ -1327,71 +1482,7 @@
         </ul>
 
         <div class="header-actions">
-          <button
-            class="search-toggle"
-            aria-label="Search"
-            id="search_toggle"
-            title="Search"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="16"
-              width="16"
-              viewBox="0 0 512 512"
-              fill="currentColor"
-            >
-              <path
-                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-              />
-            </svg>
-          </button>
-
-          <button
-            class="theme-toggle"
-            accesskey="t"
-            title="Toggle theme"
-            aria-label="Toggle dark/light mode"
-          >
-            <svg
-              id="moon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="dark:hidden"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <svg
-              id="sun"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="hidden dark:block"
-            >
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-          </button>
-        </div>
+          
       </nav>
 
       <div id="search" class="hidden p-3"></div>
@@ -1877,7 +1968,7 @@
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"
                 />
                 <path
-                  d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
+                  d="M12 7a5 5 0 1 0 0 10 5 5 0 1 0 0-10zm0 8a3 3 0 1 1 0-6 3 3 0 1 1 0 6z"
                 />
                 <circle cx="17.5" cy="6.5" r="1.5" />
               </svg>

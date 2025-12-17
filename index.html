@@ -125,6 +125,24 @@
         --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
       }
 
+      /* Utility class for hiding elements - ADDED FIX */
+      .hidden {
+        display: none !important;
+      }
+
+      /* Dark mode visibility utilities - ADDED FIX */
+      .dark .dark\:hidden {
+        display: none !important;
+      }
+
+      .dark .dark\:block {
+        display: block !important;
+      }
+
+      html:not(.dark) .dark\:block {
+        display: none !important;
+      }
+
       /* Base Styles */
       html {
         font-size: 16px;
@@ -749,19 +767,77 @@
         min-width: 160px;
       }
 
-      .cv-button {
+      /* ===== FIX FOR DARK MODE BUTTON VISIBILITY ===== */
+
+      /* Base button styles for both modes */
+      .ctas-grid .cv-button,
+      .ctas-grid .contact-button {
+        position: relative;
+        z-index: 1;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+        outline: none;
+        color: #ffffff !important; /* Force white text for maximum contrast */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Light mode specific styles */
+      html:not(.dark) .ctas-grid .cv-button {
         background: linear-gradient(
           135deg,
           var(--primary-navy),
           var(--primary-blue)
         );
-        color: white;
-        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
+        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.3);
       }
 
-      .cv-button:hover {
+      html:not(.dark) .ctas-grid .contact-button {
+        background: linear-gradient(135deg, var(--accent-teal), #2c7a7b);
+        box-shadow: 0 4px 15px rgba(49, 151, 149, 0.3);
+      }
+
+      /* Dark mode specific styles - HIGH CONTRAST */
+      .dark .ctas-grid .cv-button {
+        background: linear-gradient(135deg, #1e40af, #3b82f6) !important;
+        box-shadow: 0 4px 20px rgba(30, 64, 175, 0.5) !important;
+        border: 2px solid rgba(255, 255, 255, 0.2) !important;
+      }
+
+      .dark .ctas-grid .contact-button {
+        background: linear-gradient(135deg, #0f766e, #14b8a6) !important;
+        box-shadow: 0 4px 20px rgba(20, 184, 166, 0.4) !important;
+        border: 2px solid rgba(255, 255, 255, 0.2) !important;
+      }
+
+      /* Hover effects for all buttons */
+      .ctas-grid .cv-button:hover,
+      .ctas-grid .contact-button:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(15, 23, 42, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        filter: brightness(1.1);
+      }
+
+      .dark .ctas-grid .cv-button:hover,
+      .dark .ctas-grid .contact-button:hover {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+        border-color: var(--accent-gold) !important;
+      }
+
+      /* Ensure SVG icons are visible in both modes */
+      .ctas-grid .cv-button svg,
+      .ctas-grid .contact-button svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        stroke: #ffffff;
+        color: #ffffff;
+        filter: brightness(0) invert(1);
+      }
+
+      /* Specific hover colors */
+      html:not(.dark) .ctas-grid .cv-button:hover {
         background: linear-gradient(
           135deg,
           var(--primary-blue),
@@ -769,17 +845,18 @@
         );
       }
 
-      .contact-button {
-        background: linear-gradient(135deg, var(--accent-teal), #2c7a7b);
-        color: white;
-        box-shadow: 0 4px 15px rgba(49, 151, 149, 0.2);
-      }
-
-      .contact-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(49, 151, 149, 0.3);
+      html:not(.dark) .ctas-grid .contact-button:hover {
         background: linear-gradient(135deg, #2c7a7b, var(--accent-teal));
       }
+
+      .dark .ctas-grid .cv-button:hover {
+        background: linear-gradient(135deg, #3b82f6, #1e40af) !important;
+      }
+
+      .dark .ctas-grid .contact-button:hover {
+        background: linear-gradient(135deg, #14b8a6, #0f766e) !important;
+      }
+      /* ===== END OF FIX ===== */
 
       .cv-button svg,
       .contact-button svg {
@@ -1185,102 +1262,6 @@
       }
     </style>
 
-    <!-- FIXED NAVIGATION SCRIPT -->
-    <script>
-      window.hbb = {
-        defaultTheme: document.documentElement.dataset.wcThemeDefault,
-        setDarkTheme: () => {
-          document.documentElement.classList.add("dark");
-          document.documentElement.style.colorScheme = "dark";
-        },
-        setLightTheme: () => {
-          document.documentElement.classList.remove("dark");
-          document.documentElement.style.colorScheme = "light";
-        },
-      };
-
-      console.debug(
-        `Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`
-      );
-
-      if ("wc-color-theme" in localStorage) {
-        localStorage.getItem("wc-color-theme") === "dark"
-          ? window.hbb.setDarkTheme()
-          : window.hbb.setLightTheme();
-      } else {
-        window.hbb.defaultTheme === "dark"
-          ? window.hbb.setDarkTheme()
-          : window.hbb.setLightTheme();
-        if (window.hbb.defaultTheme === "system") {
-          window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? window.hbb.setDarkTheme()
-            : window.hbb.setLightTheme();
-        }
-      }
-
-      // Mobile menu toggle functionality
-      document.addEventListener("DOMContentLoaded", () => {
-        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
-        const navMenu = document.querySelector(".nav-menu");
-        const themeToggle = document.querySelector(".theme-toggle");
-
-        // Mobile menu toggle
-        if (mobileMenuToggle) {
-          mobileMenuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("active");
-
-            // Toggle hamburger icon
-            const showIcon = mobileMenuToggle.querySelector("#show-button");
-            const hideIcon = mobileMenuToggle.querySelector("#hide-button");
-            if (showIcon) showIcon.classList.toggle("hidden");
-            if (hideIcon) hideIcon.classList.toggle("hidden");
-          });
-        }
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll(".nav-link").forEach((link) => {
-          link.addEventListener("click", () => {
-            navMenu.classList.remove("active");
-            const showIcon = mobileMenuToggle.querySelector("#show-button");
-            const hideIcon = mobileMenuToggle.querySelector("#hide-button");
-            if (showIcon) showIcon.classList.remove("hidden");
-            if (hideIcon) hideIcon.classList.add("hidden");
-          });
-        });
-
-        // Theme toggle functionality - FIXED
-        if (themeToggle) {
-          themeToggle.addEventListener("click", () => {
-            const isDark = document.documentElement.classList.contains("dark");
-            if (isDark) {
-              window.hbb.setLightTheme();
-              localStorage.setItem("wc-color-theme", "light");
-            } else {
-              window.hbb.setDarkTheme();
-              localStorage.setItem("wc-color-theme", "dark");
-            }
-          });
-        }
-
-        // Search toggle functionality
-        const searchToggle = document.getElementById("search_toggle");
-        const searchElement = document.getElementById("search");
-
-        if (searchToggle && searchElement) {
-          searchToggle.addEventListener("click", () => {
-            searchElement.classList.toggle("hidden");
-            if (!searchElement.classList.contains("hidden")) {
-              const searchInput = searchElement.querySelector("input");
-              if (searchInput) {
-                searchInput.value = "";
-                searchInput.focus();
-              }
-            }
-          });
-        }
-      });
-    </script>
-
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         let checkboxes = document.querySelectorAll(
@@ -1391,9 +1372,6 @@
       src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js"
       integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="
     ></script>
-    <script>
-      window.hbb.pagefind = { baseUrl: "/" };
-    </script>
 
     <style>
       html.dark {
@@ -1412,47 +1390,6 @@
         --pagefind-ui-tag: #e6fffa;
       }
     </style>
-
-    <script>
-      window.addEventListener("DOMContentLoaded", (event) => {
-        new PagefindUI({
-          element: "#search",
-          showSubResults: true,
-          baseUrl: window.hbb.pagefind.baseUrl,
-          bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
-        });
-      });
-
-      document.addEventListener("DOMContentLoaded", () => {
-        let element = document.getElementById("search");
-        let trigger = document.getElementById("search_toggle");
-
-        if (trigger) {
-          trigger.addEventListener("click", () => {
-            element.classList.toggle("hidden");
-            element.querySelector("input").value = "";
-            element.querySelector("input").focus();
-
-            if (!element.classList.contains("hidden")) {
-              let clear_trigger = document.querySelector(
-                ".pagefind-ui__search-clear"
-              );
-
-              if (
-                clear_trigger &&
-                !clear_trigger.hasAttribute("listenerOnClick")
-              ) {
-                clear_trigger.setAttribute("listenerOnClick", "true");
-
-                clear_trigger.addEventListener("click", () => {
-                  element.classList.toggle("hidden");
-                });
-              }
-            }
-          });
-        }
-      });
-    </script>
 
     <script defer src="/js/hugo-blox-en.min.js" integrity=""></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -1521,7 +1458,9 @@
             <a class="nav-link" href="/projects/" role="menuitem">Projects</a>
           </li>
           <li role="none">
-            <a class="nav-link" href="/contact/" role="menuitem">Contact</a>
+            <a class="nav-link" href="/contact/contact.html" role="menuitem"
+              >Contact</a
+            >
           </li>
         </ul>
 
@@ -1543,53 +1482,6 @@
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
               />
-            </svg>
-          </button>
-
-          <button
-            class="theme-toggle"
-            accesskey="t"
-            title="Toggle theme"
-            aria-label="Toggle dark/light mode"
-            style="display: flex; align-items: center; justify-content: center"
-          >
-            <svg
-              id="moon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="dark:hidden"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <svg
-              id="sun"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="hidden dark:block"
-            >
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
           </button>
         </div>
@@ -2246,5 +2138,119 @@
         </div>
       </div>
     </footer>
+
+    <!-- FIXED JAVASCRIPT SECTION -->
+    <script>
+      window.hbb = {
+        defaultTheme: document.documentElement.dataset.wcThemeDefault,
+        setDarkTheme: () => {
+          document.documentElement.classList.add("dark");
+          document.documentElement.style.colorScheme = "dark";
+        },
+        setLightTheme: () => {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.style.colorScheme = "light";
+        },
+      };
+
+      console.debug(
+        `Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`
+      );
+
+      if ("wc-color-theme" in localStorage) {
+        localStorage.getItem("wc-color-theme") === "dark"
+          ? window.hbb.setDarkTheme()
+          : window.hbb.setLightTheme();
+      } else {
+        window.hbb.defaultTheme === "dark"
+          ? window.hbb.setDarkTheme()
+          : window.hbb.setLightTheme();
+        if (window.hbb.defaultTheme === "system") {
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? window.hbb.setDarkTheme()
+            : window.hbb.setLightTheme();
+        }
+      }
+
+      // All event listeners
+      document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+        const themeToggle = document.querySelector(".theme-toggle");
+
+        // Mobile menu toggle
+        if (mobileMenuToggle) {
+          mobileMenuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+            const showIcon = mobileMenuToggle.querySelector("#show-button");
+            const hideIcon = mobileMenuToggle.querySelector("#hide-button");
+            if (showIcon) showIcon.classList.toggle("hidden");
+            if (hideIcon) hideIcon.classList.toggle("hidden");
+          });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            const showIcon = mobileMenuToggle.querySelector("#show-button");
+            const hideIcon = mobileMenuToggle.querySelector("#hide-button");
+            if (showIcon) showIcon.classList.remove("hidden");
+            if (hideIcon) hideIcon.classList.add("hidden");
+          });
+        });
+
+        // THEME TOGGLE - FIXED
+        if (themeToggle) {
+          themeToggle.addEventListener("click", () => {
+            const isDark = document.documentElement.classList.contains("dark");
+            if (isDark) {
+              window.hbb.setLightTheme();
+              localStorage.setItem("wc-color-theme", "light");
+            } else {
+              window.hbb.setDarkTheme();
+              localStorage.setItem("wc-color-theme", "dark");
+            }
+          });
+        }
+
+        // Search toggle functionality
+        const searchToggle = document.getElementById("search_toggle");
+        const searchElement = document.getElementById("search");
+
+        if (searchToggle && searchElement) {
+          searchToggle.addEventListener("click", () => {
+            searchElement.classList.toggle("hidden");
+            if (!searchElement.classList.contains("hidden")) {
+              const searchInput = searchElement.querySelector("input");
+              if (searchInput) {
+                searchInput.value = "";
+                searchInput.focus();
+              }
+            }
+          });
+        }
+      });
+
+      // Pagefind search initialization
+      window.addEventListener("DOMContentLoaded", (event) => {
+        if (typeof PagefindUI !== "undefined") {
+          new PagefindUI({
+            element: "#search",
+            showSubResults: true,
+            baseUrl: window.hbb.pagefind ? window.hbb.pagefind.baseUrl : "/",
+          });
+        }
+      });
+
+      // Listen for system theme changes
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          if (!localStorage.getItem("wc-color-theme")) {
+            e.matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+          }
+        });
+    </script>
   </body>
 </html>

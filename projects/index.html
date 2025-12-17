@@ -829,6 +829,11 @@
     <script>
       window.hbb.pagefind = { baseUrl: "/" };
     </script>
+    <!-- STEP 1: Added Pagefind Script for Projects Page -->
+    <script
+      src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js"
+      integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="
+    ></script>
 
     <style>
       html.dark {
@@ -954,7 +959,7 @@
           });
         });
 
-        // Theme toggle functionality - FIXED
+        // Theme toggle functionality - FIXED for Projects Page
         if (themeToggle) {
           themeToggle.addEventListener("click", () => {
             const isDark = document.documentElement.classList.contains("dark");
@@ -968,34 +973,17 @@
           });
         }
 
-        // Search toggle functionality
-        let element = document.getElementById("search");
-        let trigger = document.getElementById("search_toggle");
+        // STEP 2: Updated Search Toggle JavaScript for Projects Page - SIMPLIFIED version
+        // Search toggle functionality - FIXED
+        const searchToggle = document.getElementById("search_toggle");
+        const searchElement = document.getElementById("search");
 
-        if (trigger && element) {
-          trigger.addEventListener("click", () => {
-            element.classList.toggle("hidden");
+        if (searchToggle && searchElement) {
+          searchToggle.addEventListener("click", () => {
+            searchElement.classList.toggle("hidden");
 
-            // Initialize Pagefind if not already initialized
-            if (!element.classList.contains("hidden")) {
-              if (
-                typeof PagefindUI !== "undefined" &&
-                !element.hasAttribute("data-pagefind-initialized")
-              ) {
-                new PagefindUI({
-                  element: "#search",
-                  showSubResults: true,
-                  baseUrl: window.hbb.pagefind
-                    ? window.hbb.pagefind.baseUrl
-                    : "/",
-                  bundlePath:
-                    (window.hbb.pagefind ? window.hbb.pagefind.baseUrl : "/") +
-                    "pagefind/",
-                });
-                element.setAttribute("data-pagefind-initialized", "true");
-              }
-
-              const searchInput = element.querySelector("input");
+            if (!searchElement.classList.contains("hidden")) {
+              const searchInput = searchElement.querySelector("input");
               if (searchInput) {
                 searchInput.value = "";
                 searchInput.focus();
@@ -1120,7 +1108,9 @@
             >
           </li>
           <li role="none">
-            <a class="nav-link" href="/contact/" role="menuitem">Contact</a>
+            <a class="nav-link" href="/contact/contact.html" role="menuitem"
+              >Contact</a
+            >
           </li>
         </ul>
 
@@ -1142,53 +1132,6 @@
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
               />
-            </svg>
-          </button>
-
-          <button
-            class="theme-toggle"
-            accesskey="t"
-            title="Toggle theme"
-            aria-label="Toggle dark/light mode"
-            style="display: flex; align-items: center; justify-content: center"
-          >
-            <svg
-              id="moon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="dark:hidden"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <svg
-              id="sun"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="hidden dark:block"
-            >
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
           </button>
         </div>
@@ -1620,5 +1563,21 @@
         </div>
       </div>
     </footer>
+
+    <!-- STEP 3: Added Pagefind Initialization Script for Projects Page -->
+    <script>
+      window.addEventListener("DOMContentLoaded", (event) => {
+        if (typeof PagefindUI !== "undefined") {
+          new PagefindUI({
+            element: "#search",
+            showSubResults: true,
+            baseUrl: window.hbb.pagefind ? window.hbb.pagefind.baseUrl : "/",
+            bundlePath:
+              (window.hbb.pagefind ? window.hbb.pagefind.baseUrl : "/") +
+              "pagefind/",
+          });
+        }
+      });
+    </script>
   </body>
 </html>

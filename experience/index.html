@@ -1059,6 +1059,11 @@
     <script>
       window.hbb.pagefind = { baseUrl: "/" };
     </script>
+    <!-- STEP 1: Added Pagefind Script -->
+    <script
+      src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js"
+      integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="
+    ></script>
 
     <style>
       html.dark {
@@ -1155,34 +1160,17 @@
           });
         }
 
-        // Search toggle functionality
-        let element = document.getElementById("search");
-        let trigger = document.getElementById("search_toggle");
+        // STEP 2: Updated Search Toggle JavaScript - SIMPLIFIED version
+        // Search toggle functionality - FIXED
+        const searchToggle = document.getElementById("search_toggle");
+        const searchElement = document.getElementById("search");
 
-        if (trigger && element) {
-          trigger.addEventListener("click", () => {
-            element.classList.toggle("hidden");
+        if (searchToggle && searchElement) {
+          searchToggle.addEventListener("click", () => {
+            searchElement.classList.toggle("hidden");
 
-            // Initialize Pagefind if not already initialized
-            if (!element.classList.contains("hidden")) {
-              if (
-                typeof PagefindUI !== "undefined" &&
-                !element.hasAttribute("data-pagefind-initialized")
-              ) {
-                new PagefindUI({
-                  element: "#search",
-                  showSubResults: true,
-                  baseUrl: window.hbb.pagefind
-                    ? window.hbb.pagefind.baseUrl
-                    : "/",
-                  bundlePath:
-                    (window.hbb.pagefind ? window.hbb.pagefind.baseUrl : "/") +
-                    "pagefind/",
-                });
-                element.setAttribute("data-pagefind-initialized", "true");
-              }
-
-              const searchInput = element.querySelector("input");
+            if (!searchElement.classList.contains("hidden")) {
+              const searchInput = searchElement.querySelector("input");
               if (searchInput) {
                 searchInput.value = "";
                 searchInput.focus();
@@ -1295,7 +1283,9 @@
             <a class="nav-link" href="/projects/" role="menuitem">Projects</a>
           </li>
           <li role="none">
-            <a class="nav-link" href="/contact/" role="menuitem">Contact</a>
+            <a class="nav-link" href="/contact/contact.html" role="menuitem"
+              >Contact</a
+            >
           </li>
         </ul>
 
@@ -1889,5 +1879,21 @@
         </div>
       </div>
     </footer>
+
+    <!-- STEP 3: Added Pagefind Initialization Script before closing </body> tag -->
+    <script>
+      window.addEventListener("DOMContentLoaded", (event) => {
+        if (typeof PagefindUI !== "undefined") {
+          new PagefindUI({
+            element: "#search",
+            showSubResults: true,
+            baseUrl: window.hbb.pagefind ? window.hbb.pagefind.baseUrl : "/",
+            bundlePath:
+              (window.hbb.pagefind ? window.hbb.pagefind.baseUrl : "/") +
+              "pagefind/",
+          });
+        }
+      });
+    </script>
   </body>
 </html>
