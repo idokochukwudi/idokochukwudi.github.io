@@ -1051,7 +1051,7 @@
       /* WhatsApp QR Code Floating Container */
       .whatsapp-qr-container {
         position: fixed;
-        bottom: 30px;
+        bottom: 100px; /* FIXED: Changed from 30px to 100px to clear footer */
         right: 30px;
         z-index: 9999;
         display: flex;
@@ -1063,8 +1063,8 @@
         border: 1px solid var(--border-light);
         padding: var(--spacing-md);
         max-width: 280px;
-        transition: all var(--transition-normal);
-        animation: slideInUp 0.6s ease-out;
+        transition: all 0.3s ease;
+        transform-origin: bottom right;
       }
 
       .dark .whatsapp-qr-container {
@@ -1073,13 +1073,208 @@
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
       }
 
-      .whatsapp-qr-container:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      /* VISIBLE MINIMIZE BUTTON */
+      .whatsapp-qr-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        border: 2px solid white;
+        color: white;
+        cursor: pointer;
+        padding: 6px;
+        border-radius: var(--radius-full);
+        transition: all 0.3s ease;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+        font-weight: bold;
       }
 
-      .dark .whatsapp-qr-container:hover {
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      .whatsapp-qr-close:hover {
+        background: linear-gradient(135deg, #ff5252, #e74c3c);
+        transform: scale(1.1) rotate(90deg);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+      }
+
+      .whatsapp-qr-close:active {
+        transform: scale(0.95);
+      }
+
+      /* Minimize button text/icon */
+      .whatsapp-qr-close::before {
+        content: "−";
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 1;
+      }
+
+      /* Hover tooltip for minimize button */
+      .whatsapp-qr-close::after {
+        content: "Minimize";
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-navy);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 11;
+      }
+
+      .whatsapp-qr-close::after {
+        content: "Minimize to chat icon";
+      }
+
+      .whatsapp-qr-close:hover::after {
+        opacity: 1;
+        visibility: visible;
+        top: -45px;
+      }
+
+      /* MESSAGE BUBBLE STYLE WHEN MINIMIZED */
+      .whatsapp-qr-container.minimized {
+        width: auto;
+        height: auto;
+        max-width: 60px;
+        padding: 12px;
+        border-radius: 25px 25px 25px 5px; /* Chat bubble shape */
+        overflow: hidden;
+        background: linear-gradient(135deg, #25d366, #128c7e);
+        border-color: transparent;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        cursor: pointer;
+        animation: bounceIn 0.5s ease;
+        bottom: 100px; /* FIXED: Added same bottom position as expanded */
+      }
+
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        70% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .whatsapp-qr-container.minimized:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      }
+
+      /* Message bubble indicator */
+      .whatsapp-qr-container.minimized::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 15px 15px;
+        border-color: transparent transparent #128c7e transparent;
+      }
+
+      /* Expand button when minimized */
+      .whatsapp-qr-container.minimized::before {
+        content: "+";
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #ff6b6b;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: bold;
+        border: 2px solid white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 11;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .whatsapp-qr-container.minimized:hover::before {
+        opacity: 1;
+      }
+
+      /* Hide all content when minimized except the message icon */
+      .whatsapp-qr-container.minimized .whatsapp-qr-header,
+      .whatsapp-qr-container.minimized .whatsapp-qr-subtitle,
+      .whatsapp-qr-container.minimized .whatsapp-qr-image-container,
+      .whatsapp-qr-container.minimized .whatsapp-qr-link,
+      .whatsapp-qr-container.minimized .whatsapp-qr-close,
+      .whatsapp-qr-container.minimized p {
+        display: none !important;
+      }
+
+      /* Show only message icon when minimized */
+      .whatsapp-qr-container.minimized .whatsapp-message-icon {
+        display: block !important;
+        position: relative;
+        width: 32px;
+        height: 32px;
+      }
+
+      /* Message icon styling */
+      .whatsapp-message-icon {
+        display: none;
+        position: relative;
+        width: 32px;
+        height: 32px;
+      }
+
+      .whatsapp-message-icon svg {
+        width: 100%;
+        height: 100%;
+        color: white;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+      }
+
+      /* Message indicator dot */
+      .whatsapp-message-indicator {
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        width: 8px;
+        height: 8px;
+        background: #ff3b30;
+        border-radius: 50%;
+        border: 2px solid #25d366;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 0.8;
+        }
       }
 
       .whatsapp-qr-header {
@@ -1090,6 +1285,7 @@
         padding-bottom: var(--spacing-sm);
         border-bottom: 1px solid var(--border-light);
         width: 100%;
+        padding-right: 40px; /* Space for minimize button */
       }
 
       .dark .whatsapp-qr-header {
@@ -1188,41 +1384,13 @@
         transform: translateY(0);
       }
 
-      .whatsapp-qr-close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: none;
-        border: none;
-        color: var(--text-muted);
-        cursor: pointer;
-        padding: var(--spacing-xs);
-        border-radius: var(--radius-full);
-        transition: all var(--transition-fast);
-        width: 28px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .whatsapp-qr-close:hover {
-        background: rgba(0, 0, 0, 0.05);
-        color: var(--text-light);
-      }
-
-      .dark .whatsapp-qr-close:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--text-dark);
-      }
-
-      .whatsapp-qr-mobile-only {
-        display: none;
+      /* Mobile WhatsApp button */
+      .whatsapp-mobile-button {
+        position: fixed;
+        bottom: 90px; /* FIXED: Changed from 20px to 90px to clear footer */
+        right: 20px;
         width: 60px;
         height: 60px;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
         background: linear-gradient(135deg, #25d366, #128c7e);
         border-radius: var(--radius-full);
         display: flex;
@@ -1231,34 +1399,88 @@
         color: white;
         text-decoration: none;
         box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-        z-index: 9999;
+        z-index: 9998;
         transition: all var(--transition-normal);
+        display: none;
       }
 
-      .whatsapp-qr-mobile-only:hover {
+      .whatsapp-mobile-button:hover {
         transform: scale(1.1);
         box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4);
-      }
-
-      @keyframes slideInUp {
-        from {
-          opacity: 0;
-          transform: translateY(50px) translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) translateX(0);
-        }
       }
 
       /* Responsive Design */
       @media (max-width: 768px) {
         .whatsapp-qr-container {
-          display: none;
+          display: none !important;
         }
 
-        .whatsapp-qr-mobile-only {
+        .whatsapp-mobile-button {
           display: flex;
+        }
+      }
+    </style>
+
+    <style>
+      /* Back to Top Button - Positioned above WhatsApp */
+      .back-to-top {
+        position: fixed;
+        bottom: 160px; /* Positioned above WhatsApp container */
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--accent-teal),
+          var(--accent-gold)
+        );
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 10000; /* Higher than WhatsApp (9999) */
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .back-to-top.visible {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 8px 30px rgba(49, 151, 149, 0.3);
+      }
+
+      .back-to-top:active {
+        transform: translateY(0) scale(0.95);
+      }
+
+      /* When WhatsApp is minimized, adjust position */
+      .whatsapp-qr-container.minimized ~ .back-to-top {
+        bottom: 180px; /* Higher position when WhatsApp is minimized */
+      }
+
+      /* Adjust for mobile */
+      @media (max-width: 768px) {
+        .back-to-top {
+          bottom: 160px; /* Above WhatsApp mobile button */
+          right: 20px;
+          width: 45px;
+          height: 45px;
+        }
+
+        /* Adjust WhatsApp mobile button position */
+        .whatsapp-mobile-button {
+          bottom: 90px;
+          z-index: 9998; /* Lower than back-to-top */
         }
       }
     </style>
@@ -1433,65 +1655,105 @@
           observer.observe(item);
         });
       });
-    </script>
 
-    <script>
-      // WhatsApp QR Code functionality
+      // WhatsApp QR Code functionality - WITH MINIMIZE FEATURE
       document.addEventListener("DOMContentLoaded", function () {
         const whatsappQrContainer = document.querySelector(
           ".whatsapp-qr-container"
         );
         const whatsappQrClose = document.querySelector(".whatsapp-qr-close");
-        const whatsappQrMobileButton = document.querySelector(
-          ".whatsapp-qr-mobile-only"
+        const whatsappMobileButton = document.querySelector(
+          ".whatsapp-mobile-button"
         );
 
-        // Close WhatsApp QR container
-        if (whatsappQrClose) {
-          whatsappQrClose.addEventListener("click", () => {
-            whatsappQrContainer.style.display = "none";
-            // Store preference in localStorage
-            localStorage.setItem("whatsappQrClosed", "true");
-          });
-        }
-
-        // Show WhatsApp QR container on mobile button click
-        if (whatsappQrMobileButton) {
-          whatsappQrMobileButton.addEventListener("click", (e) => {
-            e.preventDefault();
-            // Show the full container
-            whatsappQrContainer.style.display = "flex";
-            // Scroll to it if needed
-            whatsappQrContainer.scrollIntoView({
-              behavior: "smooth",
-              block: "nearest",
-            });
-          });
-        }
-
-        // Check localStorage for closed preference
-        if (localStorage.getItem("whatsappQrClosed") === "true") {
-          if (whatsappQrContainer && window.innerWidth > 768) {
-            whatsappQrContainer.style.display = "none";
+        // Initialize - check if minimized from previous session
+        if (whatsappQrContainer) {
+          const isMinimized =
+            localStorage.getItem("whatsappMinimized") === "true";
+          if (isMinimized) {
+            whatsappQrContainer.classList.add("minimized");
           }
         }
 
-        // Reset closed preference on page refresh for mobile
-        if (window.innerWidth <= 768) {
-          localStorage.removeItem("whatsappQrClosed");
+        // Close/minimize button functionality
+        if (whatsappQrClose) {
+          whatsappQrClose.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent event bubbling
+
+            if (whatsappQrContainer) {
+              // Toggle between minimized and expanded
+              const isMinimized =
+                whatsappQrContainer.classList.contains("minimized");
+
+              if (isMinimized) {
+                // Expand from minimized state
+                whatsappQrContainer.classList.remove("minimized");
+                localStorage.setItem("whatsappMinimized", "false");
+              } else {
+                // Minimize to chat icon
+                whatsappQrContainer.classList.add("minimized");
+                localStorage.setItem("whatsappMinimized", "true");
+              }
+            }
+          });
         }
 
-        // WhatsApp QR code interaction
+        // Click on minimized container to expand
+        if (whatsappQrContainer) {
+          whatsappQrContainer.addEventListener("click", function (e) {
+            // Only expand if currently minimized AND not clicking the close button
+            if (
+              this.classList.contains("minimized") &&
+              !e.target.closest(".whatsapp-qr-close")
+            ) {
+              this.classList.remove("minimized");
+              localStorage.setItem("whatsappMinimized", "false");
+            }
+          });
+        }
+
+        // Mobile button opens WhatsApp directly
+        if (whatsappMobileButton) {
+          whatsappMobileButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.open("https://wa.me/message/MDRWMFMU57NGA1", "_blank");
+          });
+        }
+
+        // WhatsApp QR code image interaction
         const whatsappQrImage = document.querySelector(".whatsapp-qr-image");
         if (whatsappQrImage) {
           whatsappQrImage.addEventListener("click", function () {
-            window.open(
-              this.parentElement.href ||
-                "https://linksharing.samsungcloud.com/uQvvzrpMcdqH",
-              "_blank"
-            );
+            window.open("https://wa.me/message/MDRWMFMU57NGA1", "_blank");
           });
         }
+
+        // Add WhatsApp icon to footer social links
+        function addWhatsAppToFooter() {
+          const socialLinksContainer = document.querySelector(".social-links");
+          if (socialLinksContainer) {
+            const existingWhatsAppLink =
+              socialLinksContainer.querySelector('a[href*="wa.me"]');
+            if (!existingWhatsAppLink) {
+              const whatsappLink = document.createElement("a");
+              whatsappLink.href = "https://wa.me/message/MDRWMFMU57NGA1";
+              whatsappLink.className = "social-link";
+              whatsappLink.setAttribute("aria-label", "WhatsApp Business");
+              whatsappLink.setAttribute("title", "WhatsApp Business");
+              whatsappLink.setAttribute("target", "_blank");
+              whatsappLink.setAttribute("rel", "noopener noreferrer");
+              whatsappLink.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.032 0c-6.626 0-12 5.372-12 12 0 2.126.557 4.126 1.528 5.86L0 24l6.315-1.652c1.741.943 3.712 1.476 5.803 1.476 6.627 0 12-5.372 12-12s-5.373-12-12-12zm6.44 17.212c-.333.93-1.83 1.704-2.994 1.926-.715.137-1.656.247-4.856-.514-3.636-.874-6.138-3.789-6.323-3.976-.184-.188-1.512-1.55-1.512-2.953 0-1.403.737-2.088.973-2.364.236-.277.52-.347.693-.347.173 0 .347 0 .497.006.173.006.405-.069.624.485.22.554.743 1.923.805 2.062.062.138.104.304.023.485-.08.182-.124.277-.254.43-.13.152-.263.317-.377.425-.124.117-.264.243-.113.474.15.231.674 1.003 1.446 1.626.998.8 1.84 1.05 2.073 1.174.232.124.369.104.508-.062.139-.166.594-.723.739-.973.146-.25.292-.208.497-.124.205.083 1.298.611 1.521.722.224.111.373.166.428.26.055.094.055.537-.278 1.467z"/>
+          </svg>
+        `;
+              socialLinksContainer.appendChild(whatsappLink);
+            }
+          }
+        }
+
+        // Call the function to add WhatsApp to footer
+        addWhatsAppToFooter();
       });
     </script>
   </head>
@@ -2149,6 +2411,27 @@
                 />
               </svg>
             </a>
+
+            <a
+              href="https://wa.me/message/MDRWMFMU57NGA1"
+              class="social-link"
+              aria-label="WhatsApp Business"
+              title="WhatsApp Business"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12.032 0c-6.626 0-12 5.372-12 12 0 2.126.557 4.126 1.528 5.86L0 24l6.315-1.652c1.741.943 3.712 1.476 5.803 1.476 6.627 0 12-5.372 12-12s-5.373-12-12-12zm6.44 17.212c-.333.93-1.83 1.704-2.994 1.926-.715.137-1.656.247-4.856-.514-3.636-.874-6.138-3.789-6.323-3.976-.184-.188-1.512-1.55-1.512-2.953 0-1.403.737-2.088.973-2.364.236-.277.52-.347.693-.347.173 0 .347 0 .497.006.173.006.405-.069.624.485.22.554.743 1.923.805 2.062.062.138.104.304.023.485-.08.182-.124.277-.254.43-.13.152-.263.317-.377.425-.124.117-.264.243-.113.474.15.231.674 1.003 1.446 1.626.998.8 1.84 1.05 2.073 1.174.232.124.369.104.508-.062.139-.166.594-.723.739-.973.146-.25.292-.208.497-.124.205.083 1.298.611 1.521.722.224.111.373.166.428.26.055.094.055.537-.278 1.467z"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
@@ -2168,14 +2451,40 @@
           });
         }
       });
+
+      // Back to Top Button functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const backToTopButton = document.querySelector(".back-to-top");
+
+        if (backToTopButton) {
+          // Show/hide button on scroll
+          window.addEventListener("scroll", function () {
+            if (window.pageYOffset > 300) {
+              backToTopButton.classList.add("visible");
+            } else {
+              backToTopButton.classList.remove("visible");
+            }
+          });
+
+          // Smooth scroll to top when clicked
+          backToTopButton.addEventListener("click", function () {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          });
+        }
+      });
     </script>
+
     <!-- Floating WhatsApp QR Code Container (Always Visible) -->
     <div class="whatsapp-qr-container">
-      <button class="whatsapp-qr-close" aria-label="Close WhatsApp QR code">
+      <!-- Message icon (shown when minimized) -->
+      <div class="whatsapp-message-icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="32"
+          height="32"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -2183,10 +2492,22 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <path
+            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+          ></path>
         </svg>
+        <div class="whatsapp-message-indicator"></div>
+      </div>
+
+      <!-- VISIBLE MINIMIZE BUTTON -->
+      <button
+        class="whatsapp-qr-close"
+        aria-label="Minimize WhatsApp widget"
+        title="Minimize to chat icon"
+      >
+        <!-- Button content handled by CSS ::before -->
       </button>
+
       <div class="whatsapp-qr-header">
         <div class="whatsapp-qr-icon">
           <svg
@@ -2203,19 +2524,22 @@
         </div>
         <h4 class="whatsapp-qr-title">WhatsApp Business</h4>
       </div>
+
       <p class="whatsapp-qr-subtitle">
         Scan QR code or click link to start a chat with Cloudit Technologies
       </p>
+
       <div class="whatsapp-qr-image-container">
         <img
-          src="shared_qr_code.png"
+          src="/shared_qr_code.png"
           alt="WhatsApp Business QR Code - Scan to chat with Cloudit Technologies"
           class="whatsapp-qr-image"
-          onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://linksharing.samsungcloud.com/uQvvzrpMcdqH'"
+          onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wa.me/message/MDRWMFMU57NGA1'"
         />
       </div>
+
       <a
-        href="https://linksharing.samsungcloud.com/uQvvzrpMcdqH"
+        href="https://wa.me/message/MDRWMFMU57NGA1"
         class="whatsapp-qr-link"
         target="_blank"
         rel="noopener noreferrer"
@@ -2237,6 +2561,7 @@
         </svg>
         Open WhatsApp Chat
       </a>
+
       <p
         style="
           text-align: center;
@@ -2249,18 +2574,19 @@
       </p>
     </div>
 
-    <!-- Mobile-only WhatsApp button (shown on small screens) -->
+    <!-- Mobile WhatsApp button (always shows on mobile) -->
     <a
-      href="https://linksharing.samsungcloud.com/uQvvzrpMcdqH"
-      class="whatsapp-qr-mobile-only"
+      href="https://wa.me/message/MDRWMFMU57NGA1"
+      class="whatsapp-mobile-button"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Open WhatsApp Chat"
+      title="Chat on WhatsApp"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width="28"
+        height="28"
         viewBox="0 0 24 24"
         fill="currentColor"
       >
@@ -2269,5 +2595,21 @@
         />
       </svg>
     </a>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M18 15l-6-6-6 6"></path>
+      </svg>
+    </button>
   </body>
 </html>
