@@ -2611,5 +2611,25 @@
         <path d="M18 15l-6-6-6 6"></path>
       </svg>
     </button>
+    <script>
+      // Force light theme on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        // Remove dark class
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+
+        // Override localStorage setting
+        localStorage.setItem("wc-color-theme", "light");
+
+        // Ensure theme toggle button shows sun icon
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+          const moonIcon = themeToggle.querySelector("#moon");
+          const sunIcon = themeToggle.querySelector("#sun");
+          if (moonIcon) moonIcon.classList.remove("dark:hidden");
+          if (sunIcon) sunIcon.classList.add("hidden");
+        }
+      });
+    </script>
   </body>
 </html>
